@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Edit Diskon Produk - Thrify</title>
+    <title>Dashboard - Thrify</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -66,7 +66,7 @@
                   </span>
                 </a>
               </li>
-              <li class="nav-item active dropdown">
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
                   <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/package -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
@@ -75,14 +75,14 @@
                     Data Master
                   </span>
                 </a>
-                <div class="dropdown-menu show">
+                <div class="dropdown-menu">
                   <a class="dropdown-item" href="brandproduk.html" >
                     Brand Produk
                   </a>
                   <a class="dropdown-item" href="kategoriproduk.html" >
                     Kategori Produk
                   </a>
-                  <a class="dropdown-item active" href="diskonproduk.html" >
+                  <a class="dropdown-item" href="diskonproduk.html" >
                     Diskon Produk
                   </a>
                   <a class="dropdown-item" href="providerpembayaran.html" >
@@ -113,7 +113,7 @@
                   </span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="user.html" >
                   <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
@@ -163,65 +163,16 @@
           <div class="page-header d-print-none">
             <div class="row align-items-center">
               <div class="col">
-                <div class="page-pretitle">
-                  Data Master / <a href="diskonproduk.html">Diskon Produk</a>
-                </div>
                 <h2 class="page-title">
-                  Edit Diskon Produk
+                  Empty page
                 </h2>
-              </div>
-              <div class="col-auto ms-auto d-print-none">
-                <div class="btn-list">
-                  <a href="diskonproduk.html" class="btn btn-warning d-none d-sm-inline-block">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/square-x -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
-                    Batal
-                  </a>
-                  <a href="diskonproduk.html" class="btn btn-warning d-sm-none btn-icon" aria-label="Batal">
-                    <!-- Download SVG icon from http://tabler-icons.io/i/square-x -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="page-body">
           <div class="container-xl">
-            <div class="row row-cards">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Form Edit Diskon Produk</h3>
-                  </div>
-                  <div class="card-body">
-                    <form>
-                      <div class="form-group mb-3">
-                        <label class="form-label required">Nama Diskon Produk</label>
-                        <div >
-                          <input type="text" class="form-control" placeholder="Masukkan nama diskon produk" required value="Diskon Lebaran">
-                        </div>
-                      </div>
-                      <div class="form-group mb-3">
-                        <label class="form-label required">Jumlah Diskon Produk</label>
-                        <div >
-                          <input type="number" class="form-control" placeholder="Masukkan nama diskon produk" required value="75">
-                        </div>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-check form-switch">
-                          <input type="checkbox" class="form-check-input" checked>
-                          <span class="form-check-label">Aktif</span>
-                        </label>
-                      </div>
-                      <div class="form-footer">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Content here -->
           </div>
         </div>
         <footer class="footer footer-transparent d-print-none">
