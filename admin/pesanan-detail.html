@@ -163,16 +163,113 @@
           <div class="page-header d-print-none">
             <div class="row align-items-center">
               <div class="col">
+                <div class="page-pretitle">
+                  <a href="pesanan.html">Pesanan</a>
+                </div>
                 <h2 class="page-title">
-                  Empty page
+                  Detail Pesanan
                 </h2>
+              </div>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                  <a href="pesanan.html" class="btn btn-yellow d-none d-sm-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                    Kembali
+                  </a>
+                  <a href="pesanan.html" class="btn btn-yellow d-sm-none btn-icon" aria-label="Kembali">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="page-body">
           <div class="container-xl">
-            <!-- Content here -->
+            <div class="card card-lg">
+              <div class="card-body">
+                <table class="table table-vcenter table-mobile pb-3">
+                  <tbody>
+                    <tr>
+                      <td data-label="TRX ID"><h1>TVY111622073809</h1></td>
+                      <td data-label="User">
+                        <div class="d-flex align-items-center py-1">
+                          <span class="avatar me-2">JD</span>
+                          <a href="#" class="h3 text-dark mb-0">John Doe</a>
+                        </div>
+                      </td>
+                      <td data-label="Alamat">Jl. Mangga No. 27, Tandes, Surabaya, Jawa Timur, 60184</td>
+                      <td data-label="Tanggal Pemesanan">27 May 2021</td>
+                      <td data-label="Status"><span class="badge bg-primary me-1"></span>Diproses</td>
+                      <td data-label="Provider Pembayaran">GoPay</td>
+                      <td data-label="Bukti Pembayaran"><img src="./static/bukti_pembayaran/1.jpg" alt="bukti_pembayaran" class="shadow"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table class="table table-transparent table-responsive">
+                  <thead>
+                    <tr>
+                      <th class="text-center" style="width: 1%"></th>
+                      <th>Produk</th>
+                      <th class="text-center" style="width: 1%">Qty</th>
+                      <th class="text-end" style="width: 1%">Unit</th>
+                      <th class="text-end" style="width: 1%">Amount</th>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td class="text-center">1</td>
+                    <td>
+                      <div class="d-flex align-items-center py-1">
+                        <span class="avatar me-1" style="background-image: url(./static/products/tshirt1.jpeg);"></span>
+                        <a href="#" class="flex-fill">
+                          <p class="strong text-dark mb-1">Thrasher T-Shirt</p>
+                          <div class="text-muted">T-Shirt</div>
+                        </a>
+                      </div>
+                    </td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">Rp.411.522</td>
+                    <td class="text-end">Rp.411.522</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">2</td>
+                    <td>
+                      <div class="d-flex align-items-center py-1">
+                        <span class="avatar me-1" style="background-image: url(./static/products/shoe1.jpg);"></span>
+                        <a href="#" class="flex-fill">
+                          <p class="strong text-dark mb-1">Nike Women's Flex Trainer 9 Cross</p>
+                          <div class="text-muted">Shoe</div>
+                        </a>
+                      </div>
+                    </td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">Rp.411.522</td>
+                    <td class="text-end">Rp.411.522</td>
+                  </tr>
+                  <tr>
+                    <td class="text-center">3</td>
+                    <td>
+                      <div class="d-flex align-items-center py-1">
+                        <span class="avatar me-1" style="background-image: url(./static/products/hoodie1.jpg);"></span>
+                        <a href="#" class="flex-fill">
+                          <p class="strong text-dark mb-1">Legendary Whitetails Men's Camo Outfitter Hoodie</p>
+                          <div class="text-muted">Hoodie</div>
+                        </a>
+                      </div>
+                    </td>
+                    <td class="text-center">1</td>
+                    <td class="text-end">Rp.411.522</td>
+                    <td class="text-end">Rp.411.522</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="strong text-end">Subtotal</td>
+                    <td class="text-end">Rp.1.234.566</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
         <footer class="footer footer-transparent d-print-none">
