@@ -163,16 +163,80 @@
           <div class="page-header d-print-none">
             <div class="row align-items-center">
               <div class="col">
+                <div class="page-pretitle">
+                  <a href="pesanan.html">Pesanan</a>
+                </div>
                 <h2 class="page-title">
-                  Empty page
+                  Edit Pesanan
                 </h2>
+              </div>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                  <a href="pesanan.html" class="btn btn-yellow d-none d-sm-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                    Kembali
+                  </a>
+                  <a href="pesanan.html" class="btn btn-yellow d-sm-none btn-icon" aria-label="Kembali">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="page-body">
           <div class="container-xl">
-            <!-- Content here -->
+            <div class="row row-cards">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Form Edit Pesanan</h3>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">TRX ID</label>
+                        <div >
+                          <input type="text" class="form-control" value="TVY111622073809" disabled>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Nama User</label>
+                        <div >
+                          <input type="text" class="form-control" value="John Doe" disabled>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Alamat</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan alamat pembeli" value="Jl. Mangga No. 27, Tandes, Surabaya, Jawa Timur, 60184">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Status</label>
+                        <div >
+                          <select class="form-select">
+                            <option value="1">Belum Bayar</option>
+                            <option value="2">Diproses</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label class="form-label">Provider Pembayaran</label>
+                        <div >
+                          <input type="text" class="form-control" value="GoPay" disabled>
+                        </div>
+                      </div>
+                      <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <footer class="footer footer-transparent d-print-none">
