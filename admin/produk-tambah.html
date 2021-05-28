@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Dashboard - Thrify</title>
+    <title>Tambah Produk - Thrify</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -163,16 +163,108 @@
           <div class="page-header d-print-none">
             <div class="row align-items-center">
               <div class="col">
+                <div class="page-pretitle">
+                  <a href="produk.html">Produk</a>
+                </div>
                 <h2 class="page-title">
-                  Empty page
+                  Tambah Produk
                 </h2>
+              </div>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                  <a href="produk.html" class="btn btn-warning d-none d-sm-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/square-x -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
+                    Batal
+                  </a>
+                  <a href="produk.html" class="btn btn-warning d-sm-none btn-icon" aria-label="Batal">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/square-x -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="page-body">
           <div class="container-xl">
-            <!-- Content here -->
+            <div class="row row-cards">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Form Tambah Produk</h3>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label required">Nama Produk</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan nama produk" required>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label required">Deskripsi Produk</label>
+                        <div >
+                          <textarea type="text" class="form-control" placeholder="Masukkan deskripsi produk" required></textarea>
+                        </div>
+                      </div>
+                      <div class="row g-2">
+                        <div class="col-6">
+                          <div class="form-group mb-3 ">
+                            <label class="form-label required">Harga Produk</label>
+                            <div >
+                              <input type="number" class="form-control" placeholder="Masukkan harga produk" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group mb-3 ">
+                            <label class="form-label required">Brand Produk</label>
+                            <div >
+                              <select class="form-select">
+                                <option value="1">Nike</option>
+                                <option value="2">Adidas</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group mb-3 ">
+                            <label class="form-label required">Kategori Produk</label>
+                            <div >
+                              <select class="form-select">
+                                <option value="1">Hoodie</option>
+                                <option value="2">Shoe</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group mb-3 ">
+                            <label class="form-label required">Diskon Produk</label>
+                            <div >
+                              <select class="form-select">
+                                <option value="1">Diskon A</option>
+                                <option value="2">Diskon B</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mb-3">
+                        <label class="form-label required">Foto Produk</label>
+                        <div >
+                          <input type="file" class="form-control" multiple required>
+                        </div>
+                      </div>
+                      <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <footer class="footer footer-transparent d-print-none">
