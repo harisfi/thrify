@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Dashboard - Thrify</title>
+    <title>Detail Produk - Thrify</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -163,16 +163,93 @@
           <div class="page-header d-print-none">
             <div class="row align-items-center">
               <div class="col">
+                <div class="page-pretitle">
+                  <a href="produk.html">Produk</a>
+                </div>
                 <h2 class="page-title">
-                  Empty page
+                  Detail Produk
                 </h2>
+              </div>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                  <a href="produk.html" class="btn btn-yellow d-none d-sm-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                    Kembali
+                  </a>
+                  <a href="produk.html" class="btn btn-yellow d-sm-none btn-icon" aria-label="Kembali">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="page-body">
           <div class="container-xl">
-            <!-- Content here -->
+            <div class="card card-lg">
+              <div class="card-body">
+                <table class="table table-vcenter table-mobile pb-3">
+                  <tbody>
+                    <tr>
+                      <td data-label="Foto Produk">
+                        <div class="row g-3">
+                          <div class="col-6 col-sm-3 col-md-2">
+                            <img src="./static/products/tshirt1.jpeg" alt="">
+                          </div>
+                          <div class="col-6 col-sm-3 col-md-2">
+                            <img src="./static/products/tshirt1.jpeg" alt="">
+                          </div>
+                          <div class="col-6 col-sm-3 col-md-2">
+                            <img src="./static/products/tshirt1.jpeg" alt="">
+                          </div>
+                        </div>
+                      </td>
+                      <td data-label="Nama Produk">
+                        <h1 class="mb-0">Thrasher T-Shirt</h1>
+                      </td>
+                      <td data-label="Harga">
+                        <p class="h2 mb-0">Rp. 123.456</p>
+                      </td>
+                      <td data-label="Deskripsi">
+                        <p class="mb-0">Officia anim occaecat est laborum cillum eiusmod tempor consequat enim nisi excepteur pariatur occaecat dolore. Cillum duis consequat dolore ipsum nulla fugiat duis magna voluptate qui aliquip aliquip elit non. Adipisicing occaecat excepteur eiusmod aute. In aliqua non laboris laborum incididunt ad excepteur dolor culpa ut esse ut qui ullamco. Duis sit quis fugiat nisi tempor voluptate quis.</p>
+                      </td>
+                      <td data-label="Brand">
+                        <p class="mb-0">Thrasher</p>
+                      </td>
+                      <td data-label="Kategori">
+                        <p class="mb-0">T-Shirt</p>
+                      </td>
+                      <td data-label="Diskon">
+                        <p class="mb-0">-</p>
+                      </td>
+                      <td data-label="Stok">
+                        <p class="mb-0">1</p>
+                      </td>
+                      <td data-label="Uploader">
+                        <div class="d-flex align-items-center py-1">
+                          <span class="avatar me-2">JD</span>
+                          <div class="flex-fill">
+                            <a href="#" class="font-weight-medium text-dark mb-0">John Doe</a>
+                            <p class="text-muted small mb-0">28 May 2021</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td data-label="Last Modified">
+                        <div class="d-flex align-items-center py-1">
+                          <span class="avatar me-2">JD</span>
+                          <div class="flex-fill">
+                            <a href="#" class="font-weight-medium text-dark mb-0">John Doe</a>
+                            <p class="text-muted small mb-0">28 May 2021</p>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
         <footer class="footer footer-transparent d-print-none">
