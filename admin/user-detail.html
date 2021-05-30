@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Dashboard - Thrify</title>
+    <title>Detail User - Thrify</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -163,16 +163,85 @@
           <div class="page-header d-print-none">
             <div class="row align-items-center">
               <div class="col">
+                <div class="page-pretitle">
+                  <a href="user.html">User</a>
+                </div>
                 <h2 class="page-title">
-                  Empty page
+                  Detail User
                 </h2>
+              </div>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                  <a href="user.html" class="btn btn-yellow d-none d-sm-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                    Kembali
+                  </a>
+                  <a href="user.html" class="btn btn-yellow d-sm-none btn-icon" aria-label="Kembali">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/arrow-back-up -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 13l-4 -4l4 -4m-4 4h11a4 4 0 0 1 0 8h-1" /></svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="page-body">
           <div class="container-xl">
-            <!-- Content here -->
+            <div class="row row-cards">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Detail User</h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12 col-md-4">
+                        <img src="./static/products/hoodie1.jpg" alt="">
+                      </div>
+                      <div class="col">
+                        <table class="table table-vcenter table-mobile pb-3">
+                          <tbody>
+                            <tr>
+                              <td data-label="Nama">
+                                <p class="h2 mb-0">John Doe</p>
+                              </td>
+                              <td data-label="Tanggal Lahir">
+                                <p class="mb-0">30 May 2021</p>
+                              </td>
+                              <td data-label="Nomor HP">
+                                <p class="mb-0">0812345678</p>
+                              </td>
+                              <td data-label="Email">
+                                <p class="mb-0">johndoe@example.com</p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td data-label="Alamat 1">Jl. Mangga No. 27</td>
+                              <td data-label="Alamat 2">-</td>
+                              <td data-label="Provinsi">Jawa Timur</td>
+                              <td data-label="Kota/Kabupaten">Surabaya</td>
+                              <td data-label="Kecamatan/Distrik">Tandes</td>
+                              <td data-label="Kelurahan/Desa">Tandes</td>
+                              <td data-label="Kode Pos">60184</td>
+                            </tr>
+                            <tr>
+                              <td data-label="Provider Pembayaran">
+                                <div class="d-flex py-1 align-items-center">
+                                  <span class="payment payment-s me-2" style="background-image: url(static/payments/mastercard.svg)"></span>
+                                  <a href="providerpembayaran-edit.html" class="flex-fill text-dark">Mastercard</a>
+                                </div>
+                              </td>
+                              <td data-label="No. Rekening">12345678</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <footer class="footer footer-transparent d-print-none">
