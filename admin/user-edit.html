@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Dashboard - Thrify</title>
+    <title>Edit User - Thrify</title>
     <!-- CSS files -->
     <link href="./dist/css/tabler.min.css" rel="stylesheet"/>
     <link href="./dist/css/tabler-flags.min.css" rel="stylesheet"/>
@@ -163,16 +163,121 @@
           <div class="page-header d-print-none">
             <div class="row align-items-center">
               <div class="col">
+                <div class="page-pretitle">
+                  <a href="user.html">User</a>
+                </div>
                 <h2 class="page-title">
-                  Empty page
+                  Edit User
                 </h2>
+              </div>
+              <div class="col-auto ms-auto d-print-none">
+                <div class="btn-list">
+                  <a href="user.html" class="btn btn-warning d-none d-sm-inline-block">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/square-x -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
+                    Batal
+                  </a>
+                  <a href="user.html" class="btn btn-warning d-sm-none btn-icon" aria-label="Batal">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/square-x -->
+	                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="4" y="4" width="16" height="16" rx="2" /><path d="M10 10l4 4m0 -4l-4 4" /></svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="page-body">
           <div class="container-xl">
-            <!-- Content here -->
+            <div class="row row-cards">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">Form Edit User</h3>
+                  </div>
+                  <div class="card-body">
+                    <form>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Nama</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan nama user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Tanggal Lahir</label>
+                        <div >
+                          <input type="text" name="input-mask" class="form-control" data-mask="00/00/0000" data-mask-visible="true" placeholder="00/00/0000" autocomplete="off">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Nomor HP</label>
+                        <div >
+                          <input type="number" class="form-control" placeholder="Masukkan nomor hp user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Email</label>
+                        <div >
+                          <input type="email" class="form-control" placeholder="Masukkan email user">
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Alamat 1</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan alamat 1 user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Alamat 2</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan alamat 2 user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Provinsi</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan provinsi user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Kota/Kabupaten</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan kota/kabupaten user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Kecamatan/Distrik</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan kecamatan/kistrik user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Kelurahan/Desa</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan kelurahan/desa user">
+                        </div>
+                      </div>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">Kode Pos</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan kode pos user">
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="form-group mb-3 ">
+                        <label class="form-label">No. Rekening</label>
+                        <div >
+                          <input type="text" class="form-control" placeholder="Masukkan no. rekening user">
+                        </div>
+                      </div>
+                      <div class="form-footer">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <footer class="footer footer-transparent d-print-none">
