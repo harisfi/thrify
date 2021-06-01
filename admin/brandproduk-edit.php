@@ -91,7 +91,7 @@ if (isset($_GET['id'])) {
                     <div class="form-group mb-3 ">
                       <label class="form-label required">Nama Brand Produk</label>
                       <div>
-                        <input type="text" name="nama" value="<?= $data[0] ?>" class="form-control" placeholder="Masukkan nama brand produk" value="Carlson Limited" required>
+                        <input type="text" name="nama" value="<?= $data[0] ?>" class="form-control" placeholder="Masukkan nama brand produk" required>
                       </div>
                     </div>
                     <div class="form-footer">
