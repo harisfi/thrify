@@ -70,7 +70,7 @@ if (isset($_GET['id'])) {
                   <div class="card-body">
                     <div class="row">
                       <div class="col-auto">
-                        <span class="avatar avatar-xl me-2" <?= $foto_admin != null ? "style='background-image: url(./assets/images/admin/$foto_admin);'" : "" ?>><?= $foto_admin == null ? $inisial : '' ?></span>
+                        <span class="avatar avatar-xl me-2" <?= $foto_admin != null ? "style='background-image: url(./assets/images/admins/$foto_admin);'" : "" ?>><?= $foto_admin == null ? $inisial : '' ?></span>
                       </div>
                       <div class="col">
                         <table class="table table-vcenter table-mobile pb-3">

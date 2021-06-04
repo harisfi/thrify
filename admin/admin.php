@@ -119,7 +119,7 @@ $pageSeq = 9;
                             <td data-label="No."><span class="text-muted"><?= $no ?></span></td>
                             <td data-label="Admin">
                               <div class="d-flex align-items-center py-1">
-                                <span class="avatar me-2" <?= $foto_admin != null ? "style='background-image: url(./assets/images/admin/$foto_admin);'" : "" ?>><?= $foto_admin == null ? $inisial : '' ?></span>
+                                <span class="avatar me-2" <?= $foto_admin != null ? "style='background-image: url(./assets/images/admins/$foto_admin);'" : "" ?>><?= $foto_admin == null ? $inisial : '' ?></span>
                                 <a href="./admin-detail.php?id=<?= $data[0] ?>" class="flex-fill text-reset">
                                   <div class="font-weight-medium">
                                     <?= $data[1] ?>
