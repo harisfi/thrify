@@ -130,13 +130,6 @@ $pageSeq = 7;
                                 <div class="flex-fill">
                                   <div class="text-muted small"><?= $kategori_produk ?></div>
                                   <a href="produk-detail.php?id=<?= $id_produk ?>" class="font-weight-medium text-dark"><?= $nama_produk ?></a>
-                                  <div class="d-flex my-1">
-                                    <i class="fa-star fa-sm text-yellow fas active"></i>
-                                    <i class="fa-star fa-sm text-yellow fas active"></i>
-                                    <i class="fa-star fa-sm text-yellow fas active"></i>
-                                    <i class="fa-star fa-sm text-yellow fas active"></i>
-                                    <i class="fa-star fa-sm text-yellow far"></i>
-                                  </div>
                                   <div class="text-muted small">Rp.<?= $harga_produk ?></div>
                                 </div>
                               </div>
@@ -150,7 +143,7 @@ $pageSeq = 7;
                                 <a href="produk-edit.php?id=<?= $id_produk ?>" class="btn btn-outline-primary">
                                   Edit
                                 </a>
-                                <a href="#" class="btn btn-outline-danger">
+                                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?= $nama_produk ?>?'))window.location.href = './handlers/produk.php?hapus=<?= $id_produk ?>'" class="btn btn-outline-danger">
                                   Hapus
                                 </a>
                               </div>

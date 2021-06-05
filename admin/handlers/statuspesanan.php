@@ -6,7 +6,7 @@ if (isset($_POST['status'])) {
     if ($_POST['status'] == "tambah") {
         $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
         if (!empty($nama)) {
-            $query = "INSERT INTO tbl_status_pesanan VALUES(NULL, '$nama', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin', NULL, NULL, NULL)";
+            $query = "INSERT INTO tbl_status_pesanan VALUES(NULL, '$nama', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {

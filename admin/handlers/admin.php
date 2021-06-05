@@ -27,9 +27,9 @@ if (isset($_POST['admin'])) {
                 $dest = '../assets/images/admins/'.$newname;
 
                 if (move_uploaded_file($source, $dest)) {
-                    $query = "INSERT INTO tbl_admin VALUES (NULL, '$nama', '$username', '$pass', '$newname', '$tipe', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin', NULL, NULL, NULL)";
+                    $query = "INSERT INTO tbl_admin VALUES (NULL, '$nama', '$username', '$pass', '$newname', '$tipe', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
                 } else {
-                    $query = "INSERT INTO tbl_admin VALUES (NULL, '$nama', '$username', '$pass', NULL, '$tipe', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin', NULL, NULL, NULL)";
+                    $query = "INSERT INTO tbl_admin VALUES (NULL, '$nama', '$username', '$pass', NULL, '$tipe', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
                 }
                 $ret = mysqli_query($koneksi, $query);
                 $jum = mysqli_affected_rows($koneksi);

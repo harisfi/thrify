@@ -2,6 +2,7 @@
 session_start();
 include("../../koneksi/koneksi.php");
 include("../classes/Utils.php");
+
 if (!empty($_POST['produk'])) {
     $nama_admin = $_SESSION['nama_admin'];
     if ($_POST['produk'] == "tambah" && !empty($_FILES)) {
@@ -13,7 +14,7 @@ if (!empty($_POST['produk'])) {
         $diskon = mysqli_real_escape_string($koneksi, $_POST['diskon']);
         $jum_foto = count($_FILES['foto']['name']);
         if (!empty($nama) && !empty($desc) && !empty($harga) && !empty($brand) && !empty($kategori) && $jum_foto > 0) {
-            $query_p = "INSERT INTO tbl_produk VALUES (NULL, '$nama', '$desc', '$harga', 1, '$brand', '$kategori', $diskon, current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin', NULL, NULL, NULL)";
+            $query_p = "INSERT INTO tbl_produk VALUES (NULL, '$nama', '$desc', '$harga', 1, '$brand', '$kategori', $diskon, current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
             $ret_p = mysqli_query($koneksi, $query_p);
             $jum_p = mysqli_affected_rows($koneksi);
             if ($jum_p > 0) {
@@ -26,7 +27,7 @@ if (!empty($_POST['produk'])) {
                         $newname = time().'-'.uniqid().'.'.$ext;
                         $dest = '../assets/images/products/'.$newname;
                         if (move_uploaded_file($source, $dest)) {
-                            $query_f = "INSERT INTO tbl_foto_produk VALUES (NULL, '$last_id', '$newname', 1, current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin', NULL, NULL, NULL)";
+                            $query_f = "INSERT INTO tbl_foto_produk VALUES (NULL, '$last_id', '$newname', 1, current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
                             $ret_f = mysqli_query($koneksi, $query_f);
                             $jum_f = mysqli_affected_rows($koneksi);
                         //     if ($jum_f <= 0) {
@@ -105,7 +106,7 @@ if (!empty($_POST['produk'])) {
                         $newname = time().'-'.uniqid().'.'.$ext;
                         $dest = '../assets/images/products/'.$newname;
                         if (move_uploaded_file($source, $dest)) {
-                            $query_f = "INSERT INTO tbl_foto_produk VALUES (NULL, '$id', '$newname', 1, current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin', NULL, NULL, NULL)";
+                            $query_f = "INSERT INTO tbl_foto_produk VALUES (NULL, '$id', '$newname', 1, current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
                             $ret_f = mysqli_query($koneksi, $query_f);
                             $jum_f = mysqli_affected_rows($koneksi);
                         //     if ($jum_f <= 0) {
@@ -126,6 +127,18 @@ if (!empty($_POST['produk'])) {
         }
     } else {
         header("Location:../produk.php");
+    }
+} elseif (isset($_GET['hapus'])) {
+    $id = mysqli_real_escape_string($koneksi, $_GET['hapus']);
+    $query = "DELETE FROM tbl_foto_produk WHERE id_produk = '$id';";
+    $query .= "DELETE FROM tbl_produk WHERE id = '$id';";
+    $ret = mysqli_multi_query($koneksi, $query);
+    $jum = mysqli_affected_rows($koneksi);
+    if ($jum > 0) {
+        sleep(1);
+        header("Location:../produk.php?m=s-3");
+    } else {
+        header("Location:../produk.php?m=d-4");
     }
 } else {
     header("Location:../produk.php");

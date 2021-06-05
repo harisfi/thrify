@@ -9,7 +9,7 @@ if (isset($_POST['diskon'])) {
         $status = mysqli_real_escape_string($koneksi, $_POST['status']);
         if (!empty($nama) && !empty($jumlah)) {
             $status = !empty($status) ? 1 : 0;
-            $query = "INSERT INTO tbl_diskon_produk VALUES(NULL, '$nama', '$jumlah', '$status', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin', NULL, NULL, NULL)";
+            $query = "INSERT INTO tbl_diskon_produk VALUES(NULL, '$nama', '$jumlah', '$status', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
@@ -25,12 +25,9 @@ if (isset($_POST['diskon'])) {
         $nama = isset($_POST['nama']) ? mysqli_real_escape_string($koneksi, $_POST['nama']) : NULL;
         $jumlah = isset($_POST['jumlah']) ? mysqli_real_escape_string($koneksi, $_POST['jumlah']) : NULL;
         $status = isset($_POST['status']) ? mysqli_real_escape_string($koneksi, $_POST['status']) : NULL;
-        if (!empty($nama) || !empty($jumlah) || !empty($status)) {
-            $status = $status == "on" ? "1" : "0";
-            $adder = !empty($nama) ? "nama = '$nama'" : "";
-            $adder .= (!empty($nama) ? ", " : "").(!empty($jumlah) ? "persen = '$jumlah'" : "");
-            $adder .= (!empty($jumlah) ? ", " : "")."aktif = '$status'";
-            $query = "UPDATE tbl_diskon_produk SET $adder, updated_at = current_timestamp(), updated_by = '$nama_admin' WHERE id = '$id'";
+        if (!empty($nama) && !empty($jumlah) || !empty($status)) {
+            $status = $status == "on" ? 1 : 0;
+            $query = "UPDATE tbl_diskon_produk SET nama = '$nama', persen = '$jumlah', aktif = '$status', updated_at = current_timestamp(), updated_by = '$nama_admin' WHERE id = '$id'";
             echo $query;
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
