@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     header("Location:produk.php");
   } else {
     $data = mysqli_fetch_row($ret);
-    $query_f = "SELECT foto FROM tbl_foto_produk WHERE id_produk = '$id' AND (deleted IS NULL OR deleted = 0)";
+    $query_f = "SELECT foto FROM tbl_foto_produk WHERE id_produk = '$id' AND selected = 1 AND (deleted IS NULL OR deleted = 0)";
     $ret_f = mysqli_query($koneksi, $query_f);
     $jum_f = mysqli_num_rows($ret_f);
   }

@@ -100,7 +100,7 @@ $pageSeq = 7;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT p.id, p.nama, p.harga, p.stok, b.brand, k.kategori, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND (deleted IS NULL OR deleted = 0) ORDER BY updated_at LIMIT 1) FROM tbl_produk p, tbl_brand_produk b, tbl_kategori_produk k WHERE b.id = p.id_brand AND k.id = p.id_kategori AND (p.deleted IS NULL OR p.deleted = 0) AND (b.deleted IS NULL OR b.deleted = 0) AND (k.deleted IS NULL OR k.deleted = 0)";
+                      $query = "SELECT p.id, p.nama, p.harga, p.stok, b.brand, k.kategori, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 AND (deleted IS NULL OR deleted = 0) ORDER BY updated_at LIMIT 1) FROM tbl_produk p, tbl_brand_produk b, tbl_kategori_produk k WHERE b.id = p.id_brand AND k.id = p.id_kategori AND (p.deleted IS NULL OR p.deleted = 0) AND (b.deleted IS NULL OR b.deleted = 0) AND (k.deleted IS NULL OR k.deleted = 0)";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {
@@ -114,12 +114,19 @@ $pageSeq = 7;
                           $brand_produk = $data[4];
                           $kategori_produk = $data[5];
                           $foto_produk = $data[6];
+
+                          $inisial = explode(" ", $nama_produk);
+                          if (sizeof($inisial) > 1) {
+                            $inisial = $inisial[0][0] . $inisial[1][0];
+                          } else {
+                            $inisial = $inisial[0][0];
+                          }
                       ?>
                           <tr>
                             <td data-label="No."><span class="text-muted"><?= $no ?></span></td>
                             <td data-label="Produk">
                               <div class="d-flex align-items-center py-1">
-                                <span class="avatar avatar-xl me-2" style="background-image: url(./assets/images/products/<?= $foto_produk ?>);"></span>
+                                <span class="avatar avatar-xl me-2" <?= $foto_produk != null ? "style='background-image: url(./assets/images/products/$foto_produk);'" : "" ?>><?= $foto_produk == null ? $inisial : '' ?></span>
                                 <div class="flex-fill">
                                   <div class="text-muted small"><?= $kategori_produk ?></div>
                                   <a href="produk-detail.php?id=<?= $id_produk ?>" class="font-weight-medium text-dark"><?= $nama_produk ?></a>
