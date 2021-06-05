@@ -9,6 +9,15 @@ if (isset($_GET['search'])) {
 } else {
   $search = NULL;
 }
+
+$batas = 8;
+if (!isset($_GET['page'])) {
+  $pos = 0;
+  $page = 1;
+} else {
+  $page = $_GET['page'];
+  $pos = ($page - 1) * $batas;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -104,63 +113,40 @@ if (isset($_GET['search'])) {
                     </thead>
                     <tbody>
                       <?php
-                        $query = "SELECT id, kategori FROM tbl_kategori_produk ";
-                        if (!empty($search)) {
-                          $query .= "WHERE kategori LIKE '%$search%' ";
-                        }
-                        $query .= "ORDER BY updated_at DESC";
-                        $ret = mysqli_query($koneksi, $query);
-                        $jum = mysqli_num_rows($ret);
-                        if ($jum > 0) {
-                          $no = 0;
-                          while ($data = mysqli_fetch_row($ret)) {
-                            $no++;
-                            $id_kategori = $data[0];
-                            $nama_kategori = $data[1];
+                      $query = "SELECT id, kategori FROM tbl_kategori_produk ";
+                      if (!empty($search)) {
+                        $query .= "WHERE kategori LIKE '%$search%' ";
+                      }
+                      $query .= "ORDER BY updated_at DESC";
+                      $query_lim = $query . " LIMIT $pos, $batas";
+                      $ret = mysqli_query($koneksi, $query_lim);
+                      $jum = mysqli_num_rows($ret);
+                      if ($jum > 0) {
+                        $no = $pos + 1;
+                        while ($data = mysqli_fetch_row($ret)) {
+                          $id_kategori = $data[0];
+                          $nama_kategori = $data[1];
                       ?>
-                      <tr>
-                        <td data-label="No."><span class="text-muted"><?= $no ?></span></td>
-                        <td data-label="Kategori Produk"><a href="kategoriproduk-edit.php?id=<?= $id_kategori ?>" class="text-reset" tabindex="-1"><?= $nama_kategori ?></a></td>
-                        <td data-label="Action">
-                          <div class="btn-list justify-content-md-end flex-nowrap">
-                            <a href="kategoriproduk-edit.php?id=<?= $id_kategori ?>" class="btn btn-outline-primary">
-                              Edit
-                            </a>
-                            <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?= $nama_kategori ?>?'))window.location.href = './handlers/kategoriproduk.php?hapus=<?= $id_kategori ?>'" class="btn btn-outline-danger">
-                              Hapus
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <?php }} ?>
+                          <tr>
+                            <td data-label="No."><span class="text-muted"><?= $no++ ?></span></td>
+                            <td data-label="Kategori Produk"><a href="kategoriproduk-edit.php?id=<?= $id_kategori ?>" class="text-reset" tabindex="-1"><?= $nama_kategori ?></a></td>
+                            <td data-label="Action">
+                              <div class="btn-list justify-content-md-end flex-nowrap">
+                                <a href="kategoriproduk-edit.php?id=<?= $id_kategori ?>" class="btn btn-outline-primary">
+                                  Edit
+                                </a>
+                                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?= $nama_kategori ?>?'))window.location.href = './handlers/kategoriproduk.php?hapus=<?= $id_kategori ?>'" class="btn btn-outline-danger">
+                                  Hapus
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                      <?php }
+                      } ?>
                     </tbody>
                   </table>
                 </div>
-                <div class="card-footer d-flex align-items-center">
-                  <ul class="pagination m-0 ms-auto">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <polyline points="15 6 9 12 15 18" />
-                        </svg>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <polyline points="9 6 15 12 9 18" />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                <?php include("./chunks/pagination.php") ?>
               </div>
             </div>
           </div>
