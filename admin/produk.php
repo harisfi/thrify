@@ -80,7 +80,7 @@ $pageSeq = 7;
                 </div>
                 <div class="card-body border-bottom py-3">
                   <div class="d-flex">
-                    <div class="ms-auto text-muted">
+                    <div class="text-muted">
                       Search:
                       <div class="ms-md-2 d-inline-block">
                         <input type="text" class="form-control form-control-sm" aria-label="Search product">
