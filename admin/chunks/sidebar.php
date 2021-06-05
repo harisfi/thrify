@@ -14,7 +14,7 @@ if (sizeof($inisial) > 1) {
         </button>
         <h1 class="navbar-brand navbar-brand-autodark">
             <a href=".">
-                <img src="./static/logo-white.svg" width="110" height="32" alt="Thrify" class="navbar-brand-image">
+                <img src="./assets/images/logo-white.svg" width="110" height="32" alt="Thrify" class="navbar-brand-image">
             </a>
         </h1>
         <div class="navbar-nav flex-row d-lg-none">
