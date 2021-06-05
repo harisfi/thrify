@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     header("Location:produk.php");
   } else {
     $data = mysqli_fetch_row($ret);
-    $query_f = "SELECT foto FROM tbl_foto_produk WHERE id_produk = '$id' AND selected = 1 AND (deleted IS NULL OR deleted = 0)";
+    $query_f = "SELECT foto FROM tbl_foto_produk WHERE id_produk = '$id' AND selected = 1";
     $ret_f = mysqli_query($koneksi, $query_f);
     $jum_f = mysqli_num_rows($ret_f);
   }
@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
                     </td>
                     <?php
                     $id_brand = $data[5];
-                    $query_b = "SELECT brand FROM tbl_brand_produk WHERE id = '$id_brand' AND (deleted IS NULL OR deleted = 0)";
+                    $query_b = "SELECT brand FROM tbl_brand_produk WHERE id = '$id_brand'";
                     $ret_b = mysqli_query($koneksi, $query_b);
                     $jum_b = mysqli_num_rows($ret_b);
                     if ($jum_b > 0) {
@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
                     </td>
                     <?php
                     $id_kategori = $data[6];
-                    $query_k = "SELECT kategori FROM tbl_kategori_produk WHERE id = '$id_kategori' AND (deleted IS NULL OR deleted = 0)";
+                    $query_k = "SELECT kategori FROM tbl_kategori_produk WHERE id = '$id_kategori'";
                     $ret_k = mysqli_query($koneksi, $query_k);
                     $jum_k = mysqli_num_rows($ret_k);
                     if ($jum_k > 0) {
@@ -121,7 +121,7 @@ if (isset($_GET['id'])) {
                     </td>
                     <?php
                     $id_diskon = $data[7];
-                    $query_d = "SELECT nama, persen, aktif FROM tbl_diskon_produk WHERE id = '$id_diskon' AND (deleted IS NULL OR deleted = 0)";
+                    $query_d = "SELECT nama, persen, aktif FROM tbl_diskon_produk WHERE id = '$id_diskon'";
                     $ret_d = mysqli_query($koneksi, $query_d);
                     $jum_d = mysqli_num_rows($ret_d);
                     if ($jum_d > 0) {

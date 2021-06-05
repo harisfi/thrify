@@ -77,7 +77,7 @@ $pageSeq = 8;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT id, nama, email, foto, verified FROM tbl_user WHERE deleted IS NULL OR deleted = 0";
+                      $query = "SELECT id, nama, email, foto, verified FROM tbl_user";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

@@ -171,7 +171,7 @@ if (isset($_GET['id'])) {
                       <div>
                         <select class="form-select" name="provider">
                           <?php
-                          $query_p = "SELECT id, provider FROM tbl_provider WHERE deleted IS NULL OR deleted = 0";
+                          $query_p = "SELECT id, provider FROM tbl_provider";
                           $ret_p = mysqli_query($koneksi, $query_p);
                           $jum_p = mysqli_num_rows($ret_p);
                           if ($jum_p > 0) {

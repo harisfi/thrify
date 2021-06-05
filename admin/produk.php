@@ -100,7 +100,7 @@ $pageSeq = 7;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT p.id, p.nama, p.harga, p.stok, b.brand, k.kategori, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 AND (deleted IS NULL OR deleted = 0) ORDER BY updated_at LIMIT 1) FROM tbl_produk p, tbl_brand_produk b, tbl_kategori_produk k WHERE b.id = p.id_brand AND k.id = p.id_kategori AND (p.deleted IS NULL OR p.deleted = 0) AND (b.deleted IS NULL OR b.deleted = 0) AND (k.deleted IS NULL OR k.deleted = 0)";
+                      $query = "SELECT p.id, p.nama, p.harga, p.stok, b.brand, k.kategori, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 ORDER BY updated_at LIMIT 1) FROM tbl_produk p, tbl_brand_produk b, tbl_kategori_produk k WHERE b.id = p.id_brand AND k.id = p.id_kategori";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

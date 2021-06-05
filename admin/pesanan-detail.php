@@ -111,7 +111,7 @@ if (isset($_GET['id'])) {
                   </tr>
                 </thead>
                 <?php
-                $query_i = "SELECT p.nama, k.kategori, p.harga, i.qty, i.id_produk, p.id_diskon, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND (deleted IS NULL OR deleted = 0) ORDER BY updated_at LIMIT 1) FROM tbl_item_pesanan i, tbl_produk p, tbl_kategori_produk k WHERE p.id = i.id_produk AND k.id = p.id_kategori AND (i.deleted IS NULL OR i.deleted = 0)";
+                $query_i = "SELECT p.nama, k.kategori, p.harga, i.qty, i.id_produk, p.id_diskon, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id ORDER BY updated_at LIMIT 1) FROM tbl_item_pesanan i, tbl_produk p, tbl_kategori_produk k WHERE p.id = i.id_produk AND k.id = p.id_kategori";
                 $ret_i = mysqli_query($koneksi, $query_i);
                 $jum_i = mysqli_num_rows($ret_i);
                 if ($jum_i > 0) {

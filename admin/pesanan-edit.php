@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
                       <div>
                         <select class="form-select" name="status">
                           <?php
-                          $query_s = "SELECT id, status FROM tbl_status_pesanan WHERE deleted IS NULL OR deleted = 0";
+                          $query_s = "SELECT id, status FROM tbl_status_pesanan";
                           $ret_s = mysqli_query($koneksi, $query_s);
                           $jum_s = mysqli_num_rows($ret_s);
                           if ($jum_s > 0) {

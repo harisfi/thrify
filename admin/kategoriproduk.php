@@ -99,7 +99,7 @@ $pageSeq = 2;
                     </thead>
                     <tbody>
                       <?php
-                        $query = "SELECT * FROM tbl_kategori_produk WHERE deleted IS NULL OR deleted = 0";
+                        $query = "SELECT * FROM tbl_kategori_produk";
                         $ret = mysqli_query($koneksi, $query);
                         $jum = mysqli_num_rows($ret);
                         if ($jum > 0) {

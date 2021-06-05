@@ -100,7 +100,7 @@ $pageSeq = 9;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT id, nama, username, tipe, foto FROM tbl_admin WHERE deleted IS NULL OR deleted = 0";
+                      $query = "SELECT id, nama, username, tipe, foto FROM tbl_admin";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

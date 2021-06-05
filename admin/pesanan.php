@@ -76,7 +76,7 @@ $pageSeq = 6;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT p.id, p.trx_id, u.nama, p.created_at, s.status, p.id_user FROM tbl_pesanan p, tbl_user u, tbl_status_pesanan s WHERE u.id = p.id_user AND s.id = p.id_status AND (p.deleted IS NULL OR p.deleted = 0) AND (u.deleted IS NULL OR u.deleted = 0) AND (s.deleted IS NULL OR s.deleted = 0)";
+                      $query = "SELECT p.id, p.trx_id, u.nama, p.created_at, s.status, p.id_user FROM tbl_pesanan p, tbl_user u, tbl_status_pesanan s WHERE u.id = p.id_user AND s.id = p.id_status";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

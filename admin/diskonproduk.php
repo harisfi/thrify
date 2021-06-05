@@ -101,7 +101,7 @@ $pageSeq = 3;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT id, nama, persen, aktif FROM tbl_diskon_produk WHERE deleted IS NULL OR deleted = 0";
+                      $query = "SELECT id, nama, persen, aktif FROM tbl_diskon_produk";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

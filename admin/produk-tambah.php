@@ -103,7 +103,7 @@ $pageSeq = 7;
                           <div>
                             <select class="form-select" name="brand" required>
                               <?php
-                              $query_b = "SELECT id, brand FROM tbl_brand_produk WHERE deleted IS NULL OR deleted = 0";
+                              $query_b = "SELECT id, brand FROM tbl_brand_produk";
                               $ret_b = mysqli_query($koneksi, $query_b);
                               $jum_b = mysqli_num_rows($ret_b);
                               if ($jum_b > 0) {
@@ -124,7 +124,7 @@ $pageSeq = 7;
                           <div>
                             <select class="form-select" name="kategori" required>
                               <?php
-                              $query_k = "SELECT id, kategori FROM tbl_kategori_produk WHERE deleted IS NULL OR deleted = 0";
+                              $query_k = "SELECT id, kategori FROM tbl_kategori_produk";
                               $ret_k = mysqli_query($koneksi, $query_k);
                               $jum_k = mysqli_num_rows($ret_k);
                               if ($jum_k > 0) {
@@ -146,7 +146,7 @@ $pageSeq = 7;
                             <select class="form-select" name="diskon">
                               <option value="NULL">Tidak Ada</option>
                               <?php
-                              $query_d = "SELECT id, nama, persen FROM tbl_diskon_produk WHERE deleted IS NULL OR deleted = 0";
+                              $query_d = "SELECT id, nama, persen FROM tbl_diskon_produk";
                               $ret_d = mysqli_query($koneksi, $query_d);
                               $jum_d = mysqli_num_rows($ret_d);
                               if ($jum_d > 0) {

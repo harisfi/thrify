@@ -5,7 +5,7 @@ $pageTitle = "Detail Admin";
 $pageSeq = 9;
 if (isset($_GET['id'])) {
   $id = mysqli_real_escape_string($koneksi, $_GET['id']);
-  $query = "SELECT nama, username, foto, tipe FROM tbl_admin WHERE id = '$id' AND (deleted IS NULL OR deleted = 0)";
+  $query = "SELECT nama, username, foto, tipe FROM tbl_admin WHERE id = '$id'";
   $ret = mysqli_query($koneksi, $query);
   $jum = mysqli_num_rows($ret);
   if ($jum > 0) {
