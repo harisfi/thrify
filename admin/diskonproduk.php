@@ -4,6 +4,11 @@ include("../koneksi/koneksi.php");
 include("./classes/View.php");
 $pageTitle = "Diskon Produk";
 $pageSeq = 3;
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+} else {
+  $search = NULL;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -82,9 +87,9 @@ $pageSeq = 3;
                   <div class="d-flex">
                     <div class="text-muted">
                       Search:
-                      <div class="ms-md-2 d-inline-block">
-                        <input type="text" class="form-control form-control-sm" aria-label="Search brand">
-                      </div>
+                      <form method="GET" class="ms-md-2 d-inline-block">
+                        <input type="text" name="search" class="form-control form-control-sm" aria-label="Cari diskon" placeholder="Cari diskon" value="<?= $search ?>">
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -101,7 +106,11 @@ $pageSeq = 3;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT id, nama, persen, aktif FROM tbl_diskon_produk";
+                      $query = "SELECT id, nama, persen, aktif FROM tbl_diskon_produk ";
+                      if (!empty($search)) {
+                        $query .= "WHERE nama LIKE '%$search%' OR persen LIKE '%$search%' ";
+                      }
+                      $query .= "ORDER BY updated_at DESC";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

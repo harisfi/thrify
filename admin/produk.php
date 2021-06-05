@@ -4,6 +4,11 @@ include("../koneksi/koneksi.php");
 include("./classes/View.php");
 $pageTitle = "Produk";
 $pageSeq = 7;
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+} else {
+  $search = NULL;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -82,9 +87,9 @@ $pageSeq = 7;
                   <div class="d-flex">
                     <div class="text-muted">
                       Search:
-                      <div class="ms-md-2 d-inline-block">
-                        <input type="text" class="form-control form-control-sm" aria-label="Search product">
-                      </div>
+                      <form method="GET" class="ms-md-2 d-inline-block">
+                        <input type="text" name="search" class="form-control form-control-sm" aria-label="Cari produk" placeholder="Cari produk" value="<?= $search ?>">
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -100,7 +105,11 @@ $pageSeq = 7;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT p.id, p.nama, p.harga, p.stok, b.brand, k.kategori, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 ORDER BY updated_at LIMIT 1) FROM tbl_produk p, tbl_brand_produk b, tbl_kategori_produk k WHERE b.id = p.id_brand AND k.id = p.id_kategori";
+                      $query = "SELECT p.id, p.nama, p.harga, p.stok, b.brand, k.kategori, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 ORDER BY updated_at LIMIT 1) FROM tbl_produk p, tbl_brand_produk b, tbl_kategori_produk k WHERE b.id = p.id_brand AND k.id = p.id_kategori ";
+                      if (!empty($search)) {
+                        $query .= "AND p.nama LIKE '%$search%' ";
+                      }
+                      $query .= "ORDER BY p.updated_at DESC";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

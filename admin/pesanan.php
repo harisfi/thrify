@@ -4,6 +4,11 @@ include("../koneksi/koneksi.php");
 include("./classes/View.php");
 $pageTitle = "Pesanan";
 $pageSeq = 6;
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+} else {
+  $search = NULL;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,9 +60,9 @@ $pageSeq = 6;
                   <div class="d-flex">
                     <div class="text-muted">
                       Search:
-                      <div class="ms-md-2 d-inline-block">
-                        <input type="text" class="form-control form-control-sm" aria-label="Search brand">
-                      </div>
+                      <form method="GET" class="ms-md-2 d-inline-block">
+                        <input type="text" name="search" class="form-control form-control-sm" aria-label="Cari pesanan" placeholder="Cari pesanan" value="<?= $search ?>">
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -76,7 +81,11 @@ $pageSeq = 6;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT p.id, p.trx_id, u.nama, p.created_at, s.status, p.id_user FROM tbl_pesanan p, tbl_user u, tbl_status_pesanan s WHERE u.id = p.id_user AND s.id = p.id_status";
+                      $query = "SELECT p.id, p.trx_id, u.nama, p.created_at, s.status, p.id_user FROM tbl_pesanan p, tbl_user u, tbl_status_pesanan s WHERE u.id = p.id_user AND s.id = p.id_status ";
+                      if (!empty($search)) {
+                        $query .= "AND (p.trx_id LIKE '%$search%' OR u.nama LIKE '%$search%') ";
+                      }
+                      $query .= "ORDER BY p.updated_at DESC";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {

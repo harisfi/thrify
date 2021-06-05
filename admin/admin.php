@@ -4,6 +4,11 @@ include("../koneksi/koneksi.php");
 include("./classes/View.php");
 $pageTitle = "Admin";
 $pageSeq = 9;
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+} else {
+  $search = NULL;
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -82,9 +87,9 @@ $pageSeq = 9;
                   <div class="d-flex">
                     <div class="text-muted">
                       Search:
-                      <div class="ms-md-2 d-inline-block">
-                        <input type="text" class="form-control form-control-sm" aria-label="Search Admin">
-                      </div>
+                      <form method="GET" class="ms-md-2 d-inline-block">
+                        <input type="text" name="search" class="form-control form-control-sm" aria-label="Cari admin" placeholder="Cari admin" value="<?= $search ?>">
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -100,7 +105,11 @@ $pageSeq = 9;
                     </thead>
                     <tbody>
                       <?php
-                      $query = "SELECT id, nama, username, tipe, foto FROM tbl_admin";
+                      $query = "SELECT id, nama, username, tipe, foto FROM tbl_admin ";
+                      if (!empty($search)) {
+                        $query .= "WHERE nama LIKE '%$search%' OR username LIKE '%$search%' ";
+                      }
+                      $query .= "ORDER BY updated_at DESC";
                       $ret = mysqli_query($koneksi, $query);
                       $jum = mysqli_num_rows($ret);
                       if ($jum > 0) {
