@@ -5,19 +5,12 @@ include("./classes/View.php");
 $pageTitle = "Akun";
 $pageSeq = 10;
 
-$id = $_SESSION['id_admin'];
-$query = "SELECT username, foto FROM tbl_admin WHERE id = '$id'";
-$ret = mysqli_query($koneksi, $query);
-$jum = mysqli_num_rows($ret);
-if ($jum > 0) {
-  $data = mysqli_fetch_row($ret);
-  $foto_admin = $data[1];
-  $inisial = explode(" ", $_SESSION['nama_admin']);
-  if (sizeof($inisial) > 1) {
-    $inisial = $inisial[0][0] . $inisial[1][0];
-  } else {
-    $inisial = $inisial[0][0];
-  }
+$foto_admin = $_SESSION['foto_admin'];
+$inisial = explode(" ", $_SESSION['nama_admin']);
+if (sizeof($inisial) > 1) {
+  $inisial = $inisial[0][0] . $inisial[1][0];
+} else {
+  $inisial = $inisial[0][0];
 }
 ?>
 <!doctype html>
@@ -99,7 +92,7 @@ if ($jum > 0) {
                               <p class="h2 mb-0"><?= $_SESSION['nama_admin'] ?></p>
                             </td>
                             <td data-label="Username">
-                              <p class="mb-0">@<?= $data[0] ?></p>
+                              <p class="mb-0">@<?= $_SESSION['uname_admin'] ?></p>
                             </td>
                             <td data-label="Tipe">
                               <p class="mb-0"><?= ucfirst($_SESSION['tipe_admin']) ?></p>

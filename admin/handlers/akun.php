@@ -56,6 +56,7 @@ if (isset($_POST['akun'])) {
 
                 if (move_uploaded_file($source, $dest)) {
                     $query = "UPDATE tbl_admin SET nama = '$nama', username = '$username', foto = '$newname', updated_at = current_timestamp(), updated_by = '$nama_admin' WHERE id = '$id'";
+                    $_SESSION['foto_admin'] = $newname;
                 } else {
                     $query = "UPDATE tbl_admin SET nama = '$nama', username = '$username', updated_at = current_timestamp(), updated_by = '$nama_admin' WHERE id = '$id'";
                 }
@@ -65,6 +66,8 @@ if (isset($_POST['akun'])) {
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
+                $_SESSION['nama_admin'] = $nama;
+                $_SESSION['uname_admin'] = $username;
                 header("Location:../akun.php?id=$id&m=s-1");
             } else {
                 header("Location:../akun-edit.php?id=$id&m=d-5");

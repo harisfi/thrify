@@ -1,3 +1,12 @@
+<?php
+$foto_admin = $_SESSION['foto_admin'];
+$inisial = explode(" ", $_SESSION['nama_admin']);
+if (sizeof($inisial) > 1) {
+  $inisial = $inisial[0][0] . $inisial[1][0];
+} else {
+  $inisial = $inisial[0][0];
+}
+?>
 <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
@@ -11,7 +20,7 @@
         <div class="navbar-nav flex-row d-lg-none">
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <span class="avatar avatar-sm" <?= $foto_admin != null ? "style='background-image: url(./assets/images/admins/$foto_admin);'" : "" ?>><?= $foto_admin == null ? $inisial : '' ?></span>
                     <div class="d-none d-xl-block ps-2">
                         <div><?= $_SESSION['nama_admin'] ?></div>
                         <div class="mt-1 small text-muted"><?= ucfirst($_SESSION['tipe_admin']) ?></div>
@@ -180,7 +189,7 @@
         <div class="navbar-nav flex-row order-md-last">
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                    <span class="avatar avatar-sm" style="background-image: url(./static/avatars/000m.jpg)"></span>
+                    <span class="avatar avatar-sm" <?= $foto_admin != null ? "style='background-image: url(./assets/images/admins/$foto_admin);'" : "" ?>><?= $foto_admin == null ? $inisial : '' ?></span>
                     <div class="d-none d-xl-block ps-2">
                         <div><?= $_SESSION['nama_admin'] ?></div>
                         <div class="mt-1 small text-muted"><?= ucfirst($_SESSION['tipe_admin']) ?></div>
