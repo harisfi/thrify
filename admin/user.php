@@ -143,7 +143,6 @@ if (isset($_GET['search'])) {
                   </table>
                 </div>
                 <div class="card-footer d-flex align-items-center">
-                  <p class="m-0 text-muted">Showing <span>1</span> to <span>8</span> of <span>16</span> entries</p>
                   <ul class="pagination m-0 ms-auto">
                     <li class="page-item disabled">
                       <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
