@@ -1,6 +1,6 @@
 const glide1 = document.getElementById("glide1");
 
-if (glide1) 
+if (glide1)
   new Glide(glide1, {
     type: "carousel",
     startAt: 0,

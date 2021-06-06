@@ -29,9 +29,9 @@ window.addEventListener("scroll", () => {
 
 // Scroll To
 const links = [...document.querySelectorAll(".scroll-link")];
-links.map((link) => {
+links.map(link => {
   if (!link) return;
-  link.addEventListener("click", (e) => {
+  link.addEventListener("click", e => {
     e.preventDefault();
 
     const id = e.target.getAttribute("href").slice(1);
