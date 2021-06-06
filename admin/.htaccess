@@ -1,0 +1,14 @@
+Options All -Indexes
+
+RewriteEngine On
+
+RewriteRule ^([-a-z]*)$ index.php?i=$1 [L]
+RewriteRule ^([-a-z]*)-id-([0-9]*)$ index.php?i=$1&id=$2 [L]
+RewriteRule ^([-a-z]*)-page-([0-9]*)$ index.php?i=$1&page=$2 [L]
+RewriteRule ^([-a-z]*)-search-([-a-z]*)$ index.php?i=$1&search=$2 [L]
+RewriteRule ^([-a-z]*)-m-([-a-z]*)$ index.php?i=$1&m=$2 [L]
+RewriteRule ^([-a-z]*)-id-([0-9]*)-m-([-a-z]*)$ index.php?i=$1&id=$2&m=$3 [L]
+RewriteRule ^([-a-z]*)-page-([0-9]*)-m-([-a-z]*)$ index.php?i=$1&page=$2&m=$3 [L]
+RewriteRule ^([-a-z]*)-search-([-a-z]*)-m-([-a-z]*)$ index.php?i=$1&search=$2&m=$3 [L]
+RewriteRule ^([-a-z]*)-page-([0-9]*)-search-([-a-z]*)$ index.php?i=$1&page=$2&search=$3 [L]
+RewriteRule ^([-a-z]*)-page-([0-9]*)-search-([-a-z]*)-m-([-a-z]*)$ index.php?i=$1&page=$2&search=$3&m=$4 [L]
