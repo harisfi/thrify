@@ -10,12 +10,12 @@ if (isset($_POST['kategori'])) {
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
-                header("Location:../kategoriproduk.php?m=s-1");
+                header("Location:../index.php?i=kategorizproduk&m=s-1");
             } else {
-                header("Location:../kategoriproduk-tambah.php?m=d-2");
+                header("Location:../index.php?i=kategorizproduk-tambah&m=d-2");
             }
         } else {
-            header("Location:../kategoriproduk-tambah.php?m=d-1");
+            header("Location:../index.php?i=kategorizproduk-tambah&m=d-1");
         }
     } else if ($_POST['kategori'] == "edit") {
         $id = mysqli_real_escape_string($koneksi, $_POST['id']);
@@ -25,12 +25,12 @@ if (isset($_POST['kategori'])) {
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
-                header("Location:../kategoriproduk.php?m=s-2");
+                header("Location:../index.php?i=kategorizproduk&m=s-2");
             } else {
-                header("Location:../kategoriproduk-edit.php?m=d-2");
+                header("Location:../index.php?i=kategorizproduk-edit&m=d-2");
             }
         } else {
-            header("Location:../kategoriproduk-edit.php?m=d-1");
+            header("Location:../index.php?i=kategorizproduk-edit&m=d-1");
         }
     }
 } elseif (isset($_GET['hapus'])) {
@@ -39,10 +39,9 @@ if (isset($_POST['kategori'])) {
     $ret = mysqli_query($koneksi, $query);
     $jum = mysqli_affected_rows($koneksi);
     if ($jum > 0) {
-        header("Location:../kategoriproduk.php?m=s-3");
+        header("Location:../index.php?i=kategorizproduk&m=s-3");
     } else {
-        header("Location:../kategoriproduk.php?m=d-4");
+        header("Location:../index.php?i=kategorizproduk&m=d-4");
     }
-    
 }
 ?>

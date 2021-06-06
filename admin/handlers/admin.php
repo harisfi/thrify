@@ -15,7 +15,7 @@ if (isset($_POST['admin'])) {
             $ret_u = mysqli_query($koneksi, $query_u);
             $jum_u = mysqli_num_rows($ret_u);
             if ($jum_u > 0) {
-                header("Location:../admin-tambah.php?m=d-2");
+                header("Location:../index.php?i=admin-tambah&m=d-2");
             } else {
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
                 $tipe = $tipe == 2 ? 'superadmin' : 'admin';
@@ -34,13 +34,13 @@ if (isset($_POST['admin'])) {
                 $ret = mysqli_query($koneksi, $query);
                 $jum = mysqli_affected_rows($koneksi);
                 if ($jum > 0) {
-                    header("Location:../admin.php?m=s-1");
+                    header("Location:../index.php?i=admin&m=s-1");
                 } else {
-                    header("Location:../admin-tambah.php?m=d-3");
+                    header("Location:../index.php?i=admin-tambah&m=d-3");
                 }
             }
         } else {
-            header("Location:../admin-tambah.php?m=d-1");
+            header("Location:../index.php?i=admin-tambah&m=d-1");
         }
     } else if ($_POST['admin'] == "edit") {
         $id = mysqli_real_escape_string($koneksi, $_POST['id']);
@@ -60,7 +60,7 @@ if (isset($_POST['admin'])) {
                 if ($data_u[0] == $id) {
                     goto up;
                 } else {
-                    header("Location:../admin-edit.php?id=$id&m=d-2");
+                    header("Location:../index.php?i=admin-edit&id=$id&m=d-2");
                     die;
                 }
             }
@@ -85,18 +85,18 @@ if (isset($_POST['admin'])) {
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
-                header("Location:../admin.php?id=$id&m=s-2");
+                header("Location:../index.php?i=admin&id=$id&m=s-2");
             } else {
-                header("Location:../admin-edit.php?id=$id&m=d-3");
+                header("Location:../index.php?i=admin-edit&id=$id&m=d-3");
             }
         } else {
-            header("Location:../admin-edit.php?id=$id&m=d-1");
+            header("Location:../index.php?i=admin-edit&id=$id&m=d-1");
         }
     } else {
-        header("Location:../admin.php");
+        header("Location:../index.php?i=admin");
     }
 } else {
-    header("Location:../admin.php");
+    header("Location:../index.php?i=admin");
 }
 
 if (isset($_GET['hapus'])) {
@@ -105,11 +105,11 @@ if (isset($_GET['hapus'])) {
     $ret_d = mysqli_query($koneksi, $query_d);
     $jum_d = mysqli_affected_rows($koneksi);
     if ($jum_d > 0) {
-        header("Location:../admin.php?m=s-3");
+        header("Location:../index.php?i=admin&m=s-3");
     } else {
-        header("Location:../admin.php?m=d-4");
+        header("Location:../index.php?i=admin&m=d-4");
     }
 } else {
-    header("Location:../admin.php");
+    header("Location:../index.php?i=admin");
 }
 ?>

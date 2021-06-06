@@ -31,19 +31,19 @@ if (!empty($_POST['produk'])) {
                             $ret_f = mysqli_query($koneksi, $query_f);
                             $jum_f = mysqli_affected_rows($koneksi);
                         //     if ($jum_f <= 0) {
-                        //         header("Location:../produk-tambah.php?m=d-4");
+                        //         header("Location:../produk-tambah&m=d-4");
                         //     }
                         // } else {
-                        //     header("Location:../produk-tambah.php?m=d-3");
+                        //     header("Location:../produk-tambah&m=d-3");
                         }
                     }
                 }
-                header("Location:../produk.php?m=s-1");
+                header("Location:../index.php?i=produk&m=s-1");
             } else {
-                header("Location:../produk-tambah.php?m=d-2");
+                header("Location:../index.php?i=produk-tambah&m=d-2");
             }
         } else {
-            header("Location:../produk-tambah.php?m=d-1");
+            header("Location:../index.php?i=produk-tambah&m=d-1");
         }
     } elseif ($_POST['produk'] == "edit") {
         $id = mysqli_real_escape_string($koneksi, $_POST['id']);
@@ -110,23 +110,23 @@ if (!empty($_POST['produk'])) {
                             $ret_f = mysqli_query($koneksi, $query_f);
                             $jum_f = mysqli_affected_rows($koneksi);
                         //     if ($jum_f <= 0) {
-                        //         header("Location:../produk-tambah.php?m=d-4");
+                        //         header("Location:../produk-tambah&m=d-4");
                         //     }
                         // } else {
-                        //     header("Location:../produk-tambah.php?m=d-3");
+                        //     header("Location:../produk-tambah&m=d-3");
                         }
                     }
                 }
 
-                header("Location:../produk.php?m=s-2");
+                header("Location:../index.php?i=produk&m=s-2");
             } else {
-                header("Location:../produk-edit.php?id=$id&m=d-2");
+                header("Location:../index.php?i=produk-edit&id=$id&m=d-2");
             }
         } else {
-            header("Location:../produk-edit.php?id=$id&m=d-1");
+            header("Location:../index.php?i=produk-edit&id=$id&m=d-1");
         }
     } else {
-        header("Location:../produk.php");
+        header("Location:../index.php?i=produk");
     }
 } elseif (isset($_GET['hapus'])) {
     $id = mysqli_real_escape_string($koneksi, $_GET['hapus']);
@@ -136,10 +136,10 @@ if (!empty($_POST['produk'])) {
     $jum = mysqli_affected_rows($koneksi);
     if ($jum > 0) {
         sleep(1);
-        header("Location:../produk.php?m=s-3");
+        header("Location:../index.php?i=produk&m=s-3");
     } else {
-        header("Location:../produk.php?m=d-4");
+        header("Location:../index.php?i=produk&m=d-4");
     }
 } else {
-    header("Location:../produk.php");
+    header("Location:../index.php?i=produk");
 }

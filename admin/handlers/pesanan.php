@@ -10,17 +10,17 @@ if (isset($_POST['pesanan'])) {
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
-                header("Location:../pesanan.php?m=s-1");
+                header("Location:../index.php?i=pesanan&m=s-1");
             } else {
-                header("Location:../pesanan.php?m=d-2");
+                header("Location:../index.php?i=pesanan&m=d-2");
             }
         } else {
-            header("Location:../pesanan.php?m=d-2");
+            header("Location:../index.php?i=pesanan&m=d-2");
         }
     } else {
-        header("Location:../pesanan.php?m=d-2");
+        header("Location:../index.php?i=pesanan&m=d-2");
     }
 } else {
-    header("Location:../pesanan.php?m=d-2");
+    header("Location:../index.php?i=pesanan&m=d-2");
 }
 ?>

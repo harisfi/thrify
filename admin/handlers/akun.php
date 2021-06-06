@@ -15,13 +15,13 @@ if (isset($_POST['akun'])) {
             $ret_u = mysqli_query($koneksi, $query_u);
             $jum_u = mysqli_num_rows($ret_u);
             if ($jum_u > 1) {
-                header("Location:../akun-edit.php?m=d-2");
+                header("Location:../index.php?i=akun-edit&m=d-2");
             } else if ($jum_u == 1) {
                 $data_u = mysqli_fetch_row($ret_u);
                 if ($data_u[0] == $id) {
                     goto cek_pass;
                 } else {
-                    header("Location:../akun-edit.php?m=d-2");
+                    header("Location:../index.php?i=akun-edit&m=d-2");
                     die;
                 }
             } else {
@@ -37,11 +37,11 @@ if (isset($_POST['akun'])) {
                     if (password_verify($pass2, $data_p[0])) {
                         goto up;
                     } else {
-                        header("Location:../akun-edit.php?m=d-4");
+                        header("Location:../index.php?i=akun-edit&m=d-4");
                         die;
                     }
                 } else {
-                    header("Location:../akun-edit.php?m=d-3");
+                    header("Location:../index.php?i=akun-edit&m=d-3");
                     die;
                 }
             }
@@ -68,16 +68,16 @@ if (isset($_POST['akun'])) {
             if ($jum > 0) {
                 $_SESSION['nama_admin'] = $nama;
                 $_SESSION['uname_admin'] = $username;
-                header("Location:../akun.php?id=$id&m=s-1");
+                header("Location:../index.php?i=akun&m=s-1");
             } else {
-                header("Location:../akun-edit.php?id=$id&m=d-5");
+                header("Location:../index.php?i=akun-edit&id=$id&m=d-5");
             }
         } else {
-            header("Location:../akun-edit.php?m=d-1");
+            header("Location:../index.php?i=akun-edit&m=d-1");
         }
     } else {
-        header("Location:../akun.php");
+        header("Location:../index.php?i=akun");
     }
 } else {
-    header("Location:../akun.php");
+    header("Location:../index.php?i=akun");
 }

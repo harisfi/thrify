@@ -10,12 +10,12 @@ if (isset($_POST['status'])) {
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
-                header("Location:../statuspesanan.php?m=s-1");
+                header("Location:../index.php?i=statuszpesanan&m=s-1");
             } else {
-                header("Location:../statuspesanan-tambah.php?m=d-2");
+                header("Location:../index.php?i=statuszpesanan-tambah&m=d-2");
             }
         } else {
-            header("Location:../statuspesanan-tambah.php?m=d-1");
+            header("Location:../index.php?i=statuszpesanan-tambah&m=d-1");
         }
     } else if ($_POST['status'] == "edit") {
         $id = mysqli_real_escape_string($koneksi, $_POST['id']);
@@ -25,12 +25,12 @@ if (isset($_POST['status'])) {
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
-                header("Location:../statuspesanan.php?m=s-2");
+                header("Location:../index.php?i=statuszpesanan&m=s-2");
             } else {
-                header("Location:../statuspesanan-edit.php?m=d-2");
+                header("Location:../index.php?i=statuszpesanan-edit&id=$id&m=d-2");
             }
         } else {
-            header("Location:../statuspesanan-edit.php?m=d-1");
+            header("Location:../index.php?i=statuszpesanan-edit&id=$id&m=d-1");
         }
     }
 } elseif (isset($_GET['hapus'])) {
@@ -39,9 +39,9 @@ if (isset($_POST['status'])) {
     $ret = mysqli_query($koneksi, $query);
     $jum = mysqli_affected_rows($koneksi);
     if ($jum > 0) {
-        header("Location:../statuspesanan.php?m=s-3");
+        header("Location:../index.php?i=statuszpesanan&m=s-3");
     } else {
-        header("Location:../statuspesanan.php?m=d-4");
+        header("Location:../index.php?i=statuszpesanan&m=d-4");
     }
     
 }

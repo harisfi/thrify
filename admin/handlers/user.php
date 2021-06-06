@@ -35,18 +35,18 @@ if (isset($_POST['user']) && $_POST['user'] == "edit") {
                 $ret_p = mysqli_query($koneksi, $query_p);
                 $jum_p = mysqli_affected_rows($koneksi);
                 if ($jum_p > 0) {
-                    header("Location:../user.php?m=s-1");
+                    header("Location:../index.php?i=user&m=s-1");
                 } else {
-                    header("Location:../user-edit.php?id=$id&m=d-4");
+                    header("Location:../index.php?i=user-edit&id=$id&m=d-4");
                 }
             } else {
-                header("Location:../user-edit.php?id=$id&m=d-3");
+                header("Location:../index.php?i=user-edit&id=$id&m=d-3");
             }
         } else {
-            header("Location:../user-edit.php?id=$id&m=d-2");
+            header("Location:../index.php?i=user-edit&id=$id&m=d-2");
         }
     } else {
-        header("Location:../user-edit.php?id=$id&m=d-1");
+        header("Location:../index.php?i=user-edit&id=$id&m=d-1");
     }
 }
 ?>

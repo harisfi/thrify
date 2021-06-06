@@ -6,6 +6,15 @@ if (sizeof($inisial) > 1) {
 } else {
   $inisial = $inisial[0][0];
 }
+
+$keys = array("dash", "bran", "kate", "disk", "prov", "stat", "pesa", "prod", "user", "admi", "akun");
+
+foreach ($keys as $i => $k) {
+    if (str_starts_with(strtolower($incl), $k)) {
+        $pageSeq = $i;
+        break;
+    }
+}
 ?>
 <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
     <div class="container-fluid">
@@ -27,8 +36,8 @@ if (sizeof($inisial) > 1) {
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a href="./akun.php" class="dropdown-item">Akun</a>
-                    <a href="./signout.php" class="dropdown-item">Log Out</a>
+                    <a href="index.php?i=akun" class="dropdown-item">Akun</a>
+                    <a href="index.php?i=signout" class="dropdown-item">Log Out</a>
                 </div>
             </div>
         </div>
@@ -68,25 +77,25 @@ if (sizeof($inisial) > 1) {
                         </span>
                     </a>
                     <div class="dropdown-menu <?= ($pageSeq > 0 && $pageSeq < 6) ? 'show' : '' ?>">
-                        <a class="dropdown-item <?= $pageSeq == 1 ? 'active' : '' ?>" href="brandproduk.php">
+                        <a class="dropdown-item <?= $pageSeq == 1 ? 'active' : '' ?>" href="index.php?i=brandzproduk">
                             Brand Produk
                         </a>
-                        <a class="dropdown-item <?= $pageSeq == 2 ? 'active' : '' ?>" href="kategoriproduk.php">
+                        <a class="dropdown-item <?= $pageSeq == 2 ? 'active' : '' ?>" href="index.php?i=kategorizproduk">
                             Kategori Produk
                         </a>
-                        <a class="dropdown-item <?= $pageSeq == 3 ? 'active' : '' ?>" href="diskonproduk.php">
+                        <a class="dropdown-item <?= $pageSeq == 3 ? 'active' : '' ?>" href="index.php?i=diskonzproduk">
                             Diskon Produk
                         </a>
-                        <a class="dropdown-item <?= $pageSeq == 4 ? 'active' : '' ?>" href="providerpembayaran.php">
+                        <a class="dropdown-item <?= $pageSeq == 4 ? 'active' : '' ?>" href="index.php?i=providerzpembayaran">
                             Provider Pembayaran
                         </a>
-                        <a class="dropdown-item <?= $pageSeq == 5 ? 'active' : '' ?>" href="statuspesanan.php">
+                        <a class="dropdown-item <?= $pageSeq == 5 ? 'active' : '' ?>" href="index.php?i=statuszpesanan">
                             Status Pesanan
                         </a>
                     </div>
                 </li>
                 <li class="nav-item <?= $pageSeq == 6 ? 'active' : '' ?>">
-                    <a class="nav-link" href="pesanan.php">
+                    <a class="nav-link" href="index.php?i=pesanan">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -100,7 +109,7 @@ if (sizeof($inisial) > 1) {
                     </a>
                 </li>
                 <li class="nav-item <?= $pageSeq == 7 ? 'active' : '' ?>">
-                    <a class="nav-link" href="produk.php">
+                    <a class="nav-link" href="index.php?i=produk">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -116,7 +125,7 @@ if (sizeof($inisial) > 1) {
                     </a>
                 </li>
                 <li class="nav-item <?= $pageSeq == 8 ? 'active' : '' ?>">
-                    <a class="nav-link" href="user.php">
+                    <a class="nav-link" href="index.php?i=user">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -134,7 +143,7 @@ if (sizeof($inisial) > 1) {
                 <?php
                 if ($_SESSION['tipe_admin'] == "superadmin") {?>
                 <li class="nav-item <?= $pageSeq == 9 ? 'active' : '' ?>">
-                    <a class="nav-link" href="admin.php">
+                    <a class="nav-link" href="index.php?i=admin">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -149,7 +158,7 @@ if (sizeof($inisial) > 1) {
                 </li>
                 <?php } ?>
                 <li class="nav-item <?= $pageSeq == 10 ? 'active' : '' ?>">
-                    <a class="nav-link" href="akun.php">
+                    <a class="nav-link" href="index.php?i=akun">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -164,7 +173,7 @@ if (sizeof($inisial) > 1) {
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="signout.php">
+                    <a class="nav-link" href="index.php?i=signout">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -196,13 +205,13 @@ if (sizeof($inisial) > 1) {
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <a href="./akun.php" class="dropdown-item">Akun</a>
-                    <a href="./signout.php" class="dropdown-item">Log Out</a>
+                    <a href="index.php?i=akun" class="dropdown-item">Akun</a>
+                    <a href="index.php?i=signout" class="dropdown-item">Log Out</a>
                 </div>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
-            <div class="h2 mb-0 text-dark">Welcome, <?= explode(" ", $_SESSION['nama_admin'])[0] ?>!</div>
+            <div class="h2 mb-0">Welcome, <?= explode(" ", $_SESSION['nama_admin'])[0] ?>!</div>
         </div>
     </div>
 </header>

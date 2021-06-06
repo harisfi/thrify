@@ -19,16 +19,16 @@ if (isset($_POST['login'])) {
                     $_SESSION['uname_admin'] = $data[5];
                     header("Location:../index.php");
                 } else {
-                    header("Location:../login.php?error=D-3");
+                    header("Location:../index.php?i=login&m=d-3");
                 }
             } else {
-                header("Location:../login.php?error=D-3");
+                header("Location:../index.php?i=login&m=d-3");
             }
         } else {
-            header("Location:../login.php?error=D-2");
+            header("Location:../index.php?i=login&m=d-2");
         }
     } else {
-        header("Location:../login.php?error=D-1");
+        header("Location:../index.php?i=login&m=d-1");
     }
     
 }
