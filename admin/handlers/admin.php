@@ -2,7 +2,7 @@
 session_start();
 include("../../koneksi/koneksi.php");
 include("../classes/Utils.php");
-if (isset($_POST['admin'])) {
+if (isset($_POST['admin']) && $_SESSION['tipe_admin'] == 'superadmin') {
     $nama_admin = $_SESSION['nama_admin'];
     if ($_POST['admin'] == "tambah") {
         $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
@@ -42,7 +42,7 @@ if (isset($_POST['admin'])) {
         } else {
             header("Location:../index.php?i=admin-tambah&m=d-1");
         }
-    } else if ($_POST['admin'] == "edit") {
+    } else if ($_POST['admin'] == "edit" && $_SESSION['tipe_admin'] == 'superadmin') {
         $id = mysqli_real_escape_string($koneksi, $_POST['id']);
         $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
         $username = mysqli_real_escape_string($koneksi, $_POST['username']);
@@ -99,13 +99,26 @@ if (isset($_POST['admin'])) {
     header("Location:../index.php?i=admin");
 }
 
-if (isset($_GET['hapus'])) {
+if (isset($_GET['hapus']) && $_SESSION['tipe_admin'] == 'superadmin') {
     $id = mysqli_real_escape_string($koneksi, $_GET['hapus']);
-    $query_d = "DELETE FROM tbl_admin WHERE id = '$id'";
+
+    $query_d = "SELECT tipe FROM tbl_admin WHERE id = '$id'";
     $ret_d = mysqli_query($koneksi, $query_d);
     $jum_d = mysqli_affected_rows($koneksi);
     if ($jum_d > 0) {
-        header("Location:../index.php?i=admin&m=s-3");
+        $data_d = mysqli_fetch_row($ret_d);
+        if ($data_d[0] == 'admin') {
+            $query_d = "DELETE FROM tbl_admin WHERE id = '$id'";
+            $ret_d = mysqli_query($koneksi, $query_d);
+            $jum_d = mysqli_affected_rows($koneksi);
+            if ($jum_d > 0) {
+                header("Location:../index.php?i=admin&m=s-3");
+            } else {
+                header("Location:../index.php?i=admin&m=d-4");
+            }
+        } else {
+            header("Location:../index.php?i=admin&m=d-4");
+        }
     } else {
         header("Location:../index.php?i=admin&m=d-4");
     }
