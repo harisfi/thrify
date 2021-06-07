@@ -4,7 +4,7 @@ include("../koneksi/koneksi.php");
 include("./classes/Utils.php");
 include("./classes/View.php");
 
-$incl = $_GET['i'];
+$incl = $_GET['i'] ?? "";
 
 include("./handlers/auth.php");
 
@@ -18,7 +18,7 @@ $incl = str_replace("z", "", $incl);
 
 if (isset($_GET['search'])) {
     $search = $_GET['search'];
-} else if ($_POST['search']) {
+} else if (isset($_POST['search'])) {
     $search = $_POST['search'];
 } else {
     $search = NULL;

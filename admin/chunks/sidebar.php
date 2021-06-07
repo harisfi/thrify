@@ -10,7 +10,7 @@ if (sizeof($inisial) > 1) {
 $keys = array("dash", "bran", "kate", "disk", "prov", "stat", "pesa", "prod", "user", "admi", "akun");
 
 foreach ($keys as $i => $k) {
-    if (str_starts_with(strtolower($incl), $k)) {
+    if (substr(strtolower($incl), 0, 4) === $k) {
         $pageSeq = $i;
         break;
     }

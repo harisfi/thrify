@@ -67,7 +67,7 @@
             <div class="d-flex">
               <div class="text-muted">
                 Search:
-                <form method="GET" class="ms-md-2 d-inline-block">
+                <form action="index.php?i=admin" method="POST" class="ms-md-2 d-inline-block">
                   <input type="text" name="search" class="form-control form-control-sm" aria-label="Cari admin" placeholder="Cari admin" value="<?= $search ?>">
                 </form>
               </div>

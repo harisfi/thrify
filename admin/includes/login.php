@@ -6,7 +6,7 @@
             </div>
             <div class="card-body">
                 <?php
-                if ($_GET['m']) {
+                if (isset($_GET['m'])) {
                     $err = explode("-", $_GET['m']);
                     if ($err[0] == "d") {
                         switch ($err[1]) {
