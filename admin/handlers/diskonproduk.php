@@ -6,7 +6,7 @@ if (isset($_POST['diskon'])) {
     if ($_POST['diskon'] == "tambah") {
         $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
         $jumlah = mysqli_real_escape_string($koneksi, $_POST['jumlah']);
-        $status = mysqli_real_escape_string($koneksi, $_POST['status']);
+        $status = isset($_POST['status']) ? mysqli_real_escape_string($koneksi, $_POST['status']) : NULL;
         if (!empty($nama) && !empty($jumlah)) {
             $status = !empty($status) ? 1 : 0;
             $query = "INSERT INTO tbl_diskon_produk VALUES(NULL, '$nama', '$jumlah', '$status', current_timestamp(), '$nama_admin', current_timestamp(), '$nama_admin')";
@@ -28,7 +28,6 @@ if (isset($_POST['diskon'])) {
         if (!empty($nama) && !empty($jumlah) || !empty($status)) {
             $status = $status == "on" ? 1 : 0;
             $query = "UPDATE tbl_diskon_produk SET nama = '$nama', persen = '$jumlah', aktif = '$status', updated_at = current_timestamp(), updated_by = '$nama_admin' WHERE id = '$id'";
-            echo $query;
             $ret = mysqli_query($koneksi, $query);
             $jum = mysqli_affected_rows($koneksi);
             if ($jum > 0) {
