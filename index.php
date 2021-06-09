@@ -131,7 +131,7 @@ $jum_k = mysqli_num_rows($ret_k);
     </div>
     <div class="product-layout">
       <?php
-      $query_p2 = "SELECT p.id, p.nama, p.harga, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 ORDER BY updated_at LIMIT 1) FROM tbl_produk p LIMIT 8";
+      $query_p2 = "SELECT p.id, p.nama, p.harga, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 ORDER BY updated_at LIMIT 1) FROM tbl_produk p ORDER BY updated_at DESC LIMIT 8";
       $ret_p2 = mysqli_query($koneksi, $query_p2);
       $jum_q2 = mysqli_num_rows($ret_p2);
       if ($jum_q2 > 0) {

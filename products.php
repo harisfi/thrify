@@ -125,7 +125,7 @@ if (!isset($_GET['page'])) {
             <select name="cat" id="cat">
               <option selected="selected" disabled>--Select--</option>
               <?php
-              $query_c = "SELECT k.kategori, count(p.id) FROM tbl_kategori_produk k, tbl_produk p WHERE p.id_kategori = k.id";
+              $query_c = "SELECT (SELECT kategori FROM tbl_kategori_produk WHERE id = id_kategori), COUNT(*) FROM tbl_produk GROUP BY id_kategori";
               $ret_c = mysqli_query($koneksi, $query_c);
               $jum_c = mysqli_num_rows($ret_c);
               if ($ret_c > 0) {
@@ -143,7 +143,7 @@ if (!isset($_GET['page'])) {
             <select name="brand" id="brand">
               <option selected="selected" disabled>--Select--</option>
               <?php
-              $query_b = "SELECT b.brand, count(p.id) FROM tbl_brand_produk b, tbl_produk p WHERE p.id_brand = b.id";
+              $query_b = "SELECT (SELECT brand FROM tbl_brand_produk WHERE id = id_brand), COUNT(*) FROM tbl_produk GROUP BY id_brand";
               $ret_b = mysqli_query($koneksi, $query_b);
               $jum_b = mysqli_num_rows($ret_b);
               if ($jum_b > 0) {
@@ -211,7 +211,9 @@ if (!isset($_GET['page'])) {
             }
           }
           if (!empty($sort)) {
-            $query_p .= "ORDER BY p.$sort ASC ";
+            $query_p .= "ORDER BY p.$sort DESC ";
+          } else {
+            $query_p .= "ORDER BY p.updated_by DESC ";
           }
           $query_lim = $query_p . "LIMIT $pos, $batas";
           $ret_p = mysqli_query($koneksi, $query_lim);
