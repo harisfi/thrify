@@ -1,3 +1,9 @@
+<?php
+include("./koneksi/koneksi.php");
+$query_k = "SELECT * FROM tbl_keranjang";
+$ret_k = mysqli_query($koneksi, $query_k);
+$jum_k = mysqli_num_rows($ret_k);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,44 +33,50 @@
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
         </div>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="account.html">Account</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="account.php">Account</a></li>
         </li>
         <!-- icons -->
         <li class="icons">
           <span>
-            <img src="./images/shoppingBag.svg" alt="" />
-            <small class="count d-flex">0</small>
+            <a href="cart.php" style="padding: 0;">
+              <img src="./images/shoppingBag.svg" alt="" />
+              <small class="count d-flex"><?= $jum_k ?></small>
+            </a>
           </span>
         </li>
       </ul>
       <label for="" class="btn open-btn"><i class="fas fa-bars"></i></label>
     </div>
   </nav>
-    <!-- Contact -->
-    <section class="section about">
-      <div class="title">
-        <h2>Contact Us</h2>
-      <div>
-  
-        <div class="about-center container">
-          <div class="right" data-aos="fade-left" data-aos-duration="1500">
-            <h1>THRIFY A HAPPINESS STORE <span id="type2"></span></h1>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos,
-              unde! Doloribus quisquam magnam optio mollitia. Consequuntur alias,
-              soluta optio porro dignissimos veritatis modi nisi molestias,
-              doloremque sapiente quia consectetur vel!
-            </p>
-          </div>
+
+
+  <!-- about -->
+  <section class="section about">
+    <div class="title">
+      <h2>About Us</h2>
+    <div>
+
+      <div class="about-center container">
+        <div class="left" data-aos="fade-right" data-aos-duration="1500">
+          <img src="./images/about.jpg" alt=""/>
         </div>
-      </section>
+        <div class="right" data-aos="fade-left" data-aos-duration="1500">
+          <h1>THRIFY A HAPPINESS STORE <span id="type2"></span></h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos,
+            unde! Doloribus quisquam magnam optio mollitia. Consequuntur alias,
+            soluta optio porro dignissimos veritatis modi nisi molestias,
+            doloremque sapiente quia consectetur vel!
+          </p>
+        </div>
+      </div>
+    </section>
 
-
-  <!-- Footer -->
+<!-- Footer -->
 <footer id="footer" class="section footer">
   <div class="container">
     <div class="footer-container">
@@ -117,3 +129,4 @@
 <script src="./js/index.js"></script>
 </body>
 </html>
+

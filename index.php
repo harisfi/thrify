@@ -1,3 +1,9 @@
+<?php
+include("./koneksi/koneksi.php");
+$query_k = "SELECT * FROM tbl_keranjang";
+$ret_k = mysqli_query($koneksi, $query_k);
+$jum_k = mysqli_num_rows($ret_k);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,17 +33,19 @@
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
         </div>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="account.html">Account</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="account.php">Account</a></li>
         </li>
         <!-- icons -->
         <li class="icons">
           <span>
-            <img src="./images/shoppingBag.svg" alt="" />
-            <small class="count d-flex">0</small>
+            <a href="cart.php" style="padding: 0;">
+              <img src="./images/shoppingBag.svg" alt="" />
+              <small class="count d-flex"><?= $jum_k ?></small>
+            </a>
           </span>
         </li>
       </ul>
@@ -49,7 +57,7 @@
       <h1>THRIFY</h1>
       <span>A Store Of Happiness</span>
       <small>Get All Your Second Stuff with Good Quality Here! </small>
-      <a href="">View Collection </a>
+      <a href="products.php">View Collection </a>
     </div>
     <div class="right">
       <img src="./images/hero.png" alt="" />
@@ -65,11 +73,11 @@
     </div>
 
     <div class="promotion-layout container">
-      <div class="promotion-item">
+    <div class="promotion-item">
         <img src="./images/promo1.jpg" alt="" />
         <div class="promotion-content">
           <h3>FOR MEN</h3>
-          <a href="">SHOP NOW</a>
+          <a href="products.php?cat=for-men">SHOP NOW</a>
         </div>
       </div>
 
@@ -77,7 +85,7 @@
         <img src="./images/promo2.jpg" alt="" />
         <div class="promotion-content">
           <h3>CASUAL SHOES</h3>
-          <a href="">SHOP NOW</a>
+          <a href="products.php?cat=shoes">SHOP NOW</a>
         </div>
       </div>
 
@@ -85,7 +93,7 @@
         <img src="./images/promo3.jpg" alt="" />
         <div class="promotion-content">
           <h3>FOR WOMEN</h3>
-          <a href="">SHOP NOW</a>
+          <a href="products.php?cat=for-women">SHOP NOW</a>
         </div>
       </div>
 
@@ -93,7 +101,7 @@
         <img src="./images/promo4.jpg" alt="" />
         <div class="promotion-content">
           <h3>LEATHER BELTS</h3>
-          <a href="">SHOP NOW</a>
+          <a href="products.php?cat=belts">SHOP NOW</a>
         </div>
       </div>
 
@@ -101,7 +109,7 @@
         <img src="./images/promo5.jpg" alt="" />
         <div class="promotion-content">
           <h3>DESIGNER BAGS</h3>
-          <a href="">SHOP NOW</a>
+          <a href="products.php?cat=bags">SHOP NOW</a>
         </div>
       </div>
 
@@ -109,7 +117,7 @@
         <img src="./images/promo6.jpg" alt="" />
         <div class="promotion-content">
           <h3>WATCHES</h3>
-          <a href="">SHOP NOW</a>
+          <a href="products.php?cat=watches">SHOP NOW</a>
         </div>
       </div>
     </div>
@@ -122,131 +130,31 @@
       <span>Select from the premium product brands and save plenty money</span>
     </div>
     <div class="product-layout">
+      <?php
+      $query_p2 = "SELECT p.id, p.nama, p.harga, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 ORDER BY updated_at LIMIT 1) FROM tbl_produk p LIMIT 8";
+      $ret_p2 = mysqli_query($koneksi, $query_p2);
+      $jum_q2 = mysqli_num_rows($ret_p2);
+      if ($jum_q2 > 0) {
+        while ($data_q2 = mysqli_fetch_row($ret_p2)) {
+          ?>
       <div class="product">
         <div class="img-container">
-          <img src="./images/product1.jpg" alt="" />
+          <img src="./admin/assets/images/products/<?= $data_q2[3] ?>" alt="" />
           <div class="addCart">
             <i class="fas fa-shopping-cart"></i>
           </div>
         </div>
         <div class="bottom">
-          <a href="">PUMA BackPack</a>
+          <a href="product-details.php?id=<?= $data_q2[0] ?>"><?= $data_q2[1] ?></a>
           <div class="price">
-            <span>Rp.100.000</span>
+            <span>Rp.<?= number_format($data_q2[2], 0, ',', '.') ?></span>
           </div>
         </div>
       </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product2.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">H&M Blue Shirt</a>
-          <div class="price">
-            <span>Rp.89.000</span>
-            <span class="cancel">Rp.99.000</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product3.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product4.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-            <span class="cancel">$160</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product5.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product6.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product7.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-
-          <div class="price">
-            <span>$150</span>
-            <span class="cancel">$160</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product8.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-            <span class="cancel">$160</span>
-          </div>
-        </div>
-      </div>
+          <?php
+        }
+      }
+      ?>
     </div>
   </section>
 
@@ -258,7 +166,7 @@
         <div class="content left">
           <span>Exclusive Sales</span>
           <h3>Spring Collections</h3>
-          <a href="">View Collection</a>
+          <a href="products.php?cat=spring-collections">View Collection</a>
         </div>
       </div>
       <div class="item">
@@ -266,7 +174,7 @@
         <div class="content  right">
           <span>New Trending</span>
           <h3>Designer Bags</h3>
-          <a href="">Shop Now </a>
+          <a href="products.php?cat=bags">Shop Now </a>
         </div>
       </div>
     </div>
@@ -317,13 +225,13 @@
       <div class="footer-container">
         <div class="footer-center">
           <h3>INFORMATION</h3>
-          <a href="#">About Us</a>
-          <a href="#">Contact Us</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
         </div>
         <div class="footer-center">
           <h3>MY ACCOUNT</h3>
-          <a href="#">My Account</a>
-          <a href="#">Order History</a>
+          <a href="account.html">My Account</a>
+          <a href="account.html#history">Order History</a>
         </div>
         <div class="footer-center">
           <h3>CONTACT US</h3>
@@ -365,4 +273,3 @@
 </body>
 
 </html>
-
