@@ -1,8 +1,12 @@
 <?php
 include("./koneksi/koneksi.php");
-$query_k = "SELECT * FROM tbl_keranjang";
-$ret_k = mysqli_query($koneksi, $query_k);
-$jum_k = mysqli_num_rows($ret_k);
+if (isset($_SESSION['id_ruser'])) {
+  $query_k = "SELECT * FROM tbl_keranjang";
+  $ret_k = mysqli_query($koneksi, $query_k);
+  $jum_k = mysqli_num_rows($ret_k);
+} else {
+  $jum_k = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +32,11 @@ $jum_k = mysqli_num_rows($ret_k);
   <!-- Navigation -->
   <nav class="nav">
     <div class="wrapper container">
-      <div class="logo"><a href="">THRIFY</a></div>
+      <div class="logo">
+        <a href=".">
+          <img src="./admin/assets/images/logo-white.svg" width="110" height="32" alt="Thrify" style="filter: invert(1);">
+        </a>
+      </div>
       <ul class="nav-list">
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
@@ -53,6 +61,40 @@ $jum_k = mysqli_num_rows($ret_k);
     </div>
   </nav>
 
+  <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/hero.png" width="100%">
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="Indicator">
+                        </div>
+
+                        <form id="LoginForm">
+                            <input type="text" placeholder="Username">
+                            <input type="passowrd" placeholder="Passowrd">
+                            <button type="submit" class="btn">Login</button>
+                            <a href="">Forgot passowrd</a>
+                        </form>
+
+                        <form id="RegForm">
+                            <input type="text" placeholder="Username">
+                            <input type="email" placeholder="Email">
+                            <input type="passowrd" placeholder="Passowrd">
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
   <!-- Footer -->
 <footer id="footer" class="section footer">
@@ -105,6 +147,23 @@ $jum_k = mysqli_num_rows($ret_k);
 <script src="./js/products.js"></script>
 <script src="./js/slider.js"></script>
 <script src="./js/index.js"></script>
+<script>
+        var LoginForm = document.getElementById("LoginForm");
+        var RegForm = document.getElementById("RegForm");
+        var Indicator = document.getElementById("Indicator");
+
+        function register() {
+            RegForm.style.transform = "translateX(0px)";
+            LoginForm.style.transform = "translateX(0px)";
+            Indicator.style.transform = "translateX(100px)";
+        }
+
+        function login() {
+            RegForm.style.transform = "translateX(300px)";
+            LoginForm.style.transform = "translateX(300px)";
+            Indicator.style.transform = "translateX(0px)";
+        }
+    </script>
 </body>
 </html>
 

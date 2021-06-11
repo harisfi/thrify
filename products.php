@@ -1,8 +1,12 @@
 <?php
 include("./koneksi/koneksi.php");
-$query_k = "SELECT * FROM tbl_keranjang";
-$ret_k = mysqli_query($koneksi, $query_k);
-$jum_k = mysqli_num_rows($ret_k);
+if (isset($_SESSION['id_ruser'])) {
+  $query_k = "SELECT * FROM tbl_keranjang";
+  $ret_k = mysqli_query($koneksi, $query_k);
+  $jum_k = mysqli_num_rows($ret_k);
+} else {
+  $jum_k = 0;
+}
 $batas = 15;
 if (!isset($_GET['page'])) {
     $pos = 0;
@@ -35,7 +39,11 @@ if (!isset($_GET['page'])) {
   
     <nav class="nav">
     <div class="wrapper container">
-      <div class="logo"><a href="">THRIFY</a></div>
+      <div class="logo">
+        <a href=".">
+          <img src="./admin/assets/images/logo-white.svg" width="110" height="32" alt="Thrify" style="filter: invert(1);">
+        </a>
+      </div>
       <ul class="nav-list">
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>

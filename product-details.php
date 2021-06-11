@@ -1,8 +1,25 @@
 <?php
 include("./koneksi/koneksi.php");
-$query_k = "SELECT * FROM tbl_keranjang";
-$ret_k = mysqli_query($koneksi, $query_k);
-$jum_k = mysqli_num_rows($ret_k);
+if (isset($_GET['id'])) {
+  $id = mysqli_real_escape_string($koneksi, $_GET['id']);
+  $query = "SELECT p.nama, p.deskripsi, p.harga, k.kategori FROM tbl_produk p, tbl_kategori_produk k WHERE p.id = '$id' AND k.id = p.id_kategori";
+  $ret = mysqli_query($koneksi, $query);
+  $jum = mysqli_num_rows($ret);
+  if ($jum > 0) {
+    $data = mysqli_fetch_row($ret);
+  } else {
+    header("Location:products.php");
+  }
+} else {
+  header("Location:products.php");
+}
+if (isset($_SESSION['id_ruser'])) {
+  $query_k = "SELECT * FROM tbl_keranjang";
+  $ret_k = mysqli_query($koneksi, $query_k);
+  $jum_k = mysqli_num_rows($ret_k);
+} else {
+  $jum_k = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,11 +38,15 @@ $jum_k = mysqli_num_rows($ret_k);
 </head>
 
 <body>
- 
+
   <!-- Navigation -->
   <nav class="nav">
     <div class="wrapper container">
-      <div class="logo"><a href="">THRIFY</a></div>
+      <div class="logo">
+        <a href=".">
+          <img src="./admin/assets/images/logo-white.svg" width="110" height="32" alt="Thrify" style="filter: invert(1);">
+        </a>
+      </div>
       <ul class="nav-list">
         <div class="top">
           <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
@@ -36,7 +57,7 @@ $jum_k = mysqli_num_rows($ret_k);
         <li><a href="contact.php">Contact</a></li>
         <li><a href="account.php">Account</a></li>
         <li>
-        <!-- icons -->
+          <!-- icons -->
         <li class="icons">
           <span>
             <a href="cart.php" style="padding: 0;">
@@ -54,52 +75,52 @@ $jum_k = mysqli_num_rows($ret_k);
   <section class="section product-detail">
     <div class="details container">
       <div class="left">
-        <div class="main">
-          <img src="./images/product1.jpg" alt="" />
-        </div>
-        <div class="thumbnails">
-          <div class="thumbnail">
-            <img src="./images/product2.jpg" alt="" />
-          </div>
-          <div class="thumbnail">
-            <img src="./images/product3.jpg" alt="" />
-          </div>
-          <div class="thumbnail">
-            <img src="./images/product4.jpg" alt="" />
-          </div>
-          <div class="thumbnail">
-            <img src="./images/product5.jpg" alt="" />
-          </div>
-        </div>
+        <?php
+        $query_f = "SELECT * FROM tbl_foto_produk WHERE id_produk = '$id' AND selected = 1";
+        $ret_f = mysqli_query($koneksi, $query_f);
+        $jum_f = mysqli_num_rows($ret_f);
+        if ($jum_f > 0) {
+          $i = 0;
+          while ($data_f = mysqli_fetch_row($ret_f)) {
+            if ($i == 0) {
+        ?>
+              <div class="main">
+                <img src="./admin/assets/images/products/<?= $data_f[2] ?>" alt="" />
+              </div>
+              <div class="thumbnails">
+              <?php
+            } else {
+              ?>
+                <div class="thumbnail">
+                  <img src="./admin/assets/images/products/<?= $data_f[2] ?>" alt="" />
+                </div>
+          <?php
+            }
+          }
+        }
+          ?>
+              </div>
       </div>
       <div class="right">
-        <span>Home/T-shirt</span>
-        <h1>Bambi Print Mini Backpack</h1>
-        <div class="price">$50</div>
-        <form>
-          <div>
-            <select>
-              <option value="Select Size" selected disabled>
-                Select Size
-              </option>
-              <option value="1">32</option>
-              <option value="2">42</option>
-              <option value="3">52</option>
-              <option value="4">62</option>
-            </select>
-            <span><i class="fas fa-chevron-down"></i></span>
-          </div>
-        </form>
+        <span>Home/<?= $data[3] ?></span>
+        <h1><?= $data[0] ?></h1>
+        <div class="price">Rp.<?= number_format($data[2], 0, ',', '.') ?></div>
 
         <form class="form">
-          <input type="text" placeholder="1" />
-          <a href="cart.html" class="addCart">Add To Cart</a>
+          <input type="text" value="<?= $id ?>" hidden />
+          <?php
+          if (!isset($_SESSION['id_ruser'])) {
+            ?>
+            <a href="javascript:alert('Silahkan masuk terlebih dahulu');location.href='./account.php'" class='addCart'>Add To Cart</a>
+            <?php
+          } else {
+            echo "<a href='cart.php?add='".$id."' class='addCart'>Add To Cart</a>";
+          }
+          ?>
         </form>
         <h3>Product Detail</h3>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero minima
-          delectus nulla voluptates nesciunt quidem laudantium, quisquam
-          voluptas facilis dicta in explicabo, laboriosam ipsam suscipit!
+          <?= $data[1] ?>
         </p>
       </div>
     </div>
@@ -113,62 +134,31 @@ $jum_k = mysqli_num_rows($ret_k);
       <span>Select from the premium product brands and save plenty money</span>
     </div>
     <div class="product-layout container">
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product1.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
+      <?php
+      $query_r = "SELECT p.id, p.nama, p.harga, (SELECT foto FROM tbl_foto_produk WHERE id_produk = p.id AND selected = 1 ORDER BY updated_at LIMIT 1) FROM tbl_produk p ORDER BY p.updated_by ASC LIMIT 4";
+      $ret_r = mysqli_query($koneksi, $query_r);
+      $jum_r = mysqli_num_rows($ret_r);
+      if ($jum_r > 0) {
+        while ($data_r = mysqli_fetch_row($ret_r)) {
+      ?>
+          <div class="product">
+            <div class="img-container">
+              <img src="./admin/assets/images/products/<?= $data_r[3] ?>" alt="" />
+              <div class="addCart">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+            </div>
+            <div class="bottom">
+              <a href="product-details.php?id=<?= $data_r[0] ?>"><?= $data_r[1] ?></a>
+              <div class="price">
+                <span>Rp.<?= number_format($data_r[2], 0, ',', '.') ?></span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product2.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product3.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <div class="img-container">
-          <img src="./images/product4.jpg" alt="" />
-          <div class="addCart">
-            <i class="fas fa-shopping-cart"></i>
-          </div>
-        </div>
-        <div class="bottom">
-          <a href="">Bambi Print Mini Backpack</a>
-          <div class="price">
-            <span>$150</span>
-          </div>
-        </div>
-      </div>
+      <?php
+        }
+      }
+      ?>
     </div>
   </section>
 
@@ -190,7 +180,7 @@ $jum_k = mysqli_num_rows($ret_k);
           <h3>CONTACT US</h3>
           <div>
             <span>
-            Perum Chandra Kartika, Kab Pasuruan, Jawa Timur, Indonesia
+              Perum Chandra Kartika, Kab Pasuruan, Jawa Timur, Indonesia
           </div>
           <div>
             <span>

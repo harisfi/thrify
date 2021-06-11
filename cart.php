@@ -1,8 +1,12 @@
 <?php
 include("./koneksi/koneksi.php");
-$query_k = "SELECT * FROM tbl_keranjang";
-$ret_k = mysqli_query($koneksi, $query_k);
-$jum_k = mysqli_num_rows($ret_k);
+if (isset($_SESSION['id_ruser'])) {
+  $query_k = "SELECT * FROM tbl_keranjang";
+  $ret_k = mysqli_query($koneksi, $query_k);
+  $jum_k = mysqli_num_rows($ret_k);
+} else {
+  $jum_k = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,6 +58,11 @@ $jum_k = mysqli_num_rows($ret_k);
       </div>
     </nav>
 
+    <?php
+    if (!isset($_SESSION['id_ruser'])) {
+      echo "<script>alert('Silahkan masuk terlebih dahulu');location.href='./account.php'</script>";
+    }
+    ?>
     <!-- Cart Items -->
     <div class="container cart">
       <table>
@@ -77,78 +86,10 @@ $jum_k = mysqli_num_rows($ret_k);
           <td><input type="number" value="1" min="1" /></td>
           <td>$50.00</td>
         </tr>
-        <tr>
-          <td>
-            <div class="cart-info">
-              <img src="./images/product2.jpg" alt="" />
-              <div>
-                <p>Bambi Print Mini Backpack</p>
-                <span>Price: $900.00</span>
-                <br />
-                <a href="#">remove</a>
-              </div>
-            </div>
-          </td>
-          <td><input type="number" value="1" min="1" /></td>
-          <td>$90.00</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="cart-info">
-              <img src="./images/product3.jpg" alt="" />
-              <div>
-                <p>Bambi Print Mini Backpack</p>
-                <span>Price: $700.00</span>
-                <br />
-                <a href="#">remove</a>
-              </div>
-            </div>
-          </td>
-          <td><input type="number" value="1" min="1" /></td>
-          <td>$60.00</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="cart-info">
-              <img src="./images/product4.jpg" alt="" />
-              <div>
-                <p>Bambi Print Mini Backpack</p>
-                <span>Price: $600.00</span>
-                <br />
-                <a href="#">remove</a>
-              </div>
-            </div>
-          </td>
-          <td><input type="number" value="1" min="1" /></td>
-          <td>$60.00</td>
-        </tr>
-        <tr>
-          <td>
-            <div class="cart-info">
-              <img src="./images/product5.jpg" alt="" />
-              <div>
-                <p>Bambi Print Mini Backpack</p>
-                <span>Price: $600.00</span>
-                <br />
-                <a href="#">remove</a>
-              </div>
-            </div>
-          </td>
-          <td><input type="number" value="1" min="1" /></td>
-          <td>$60.00</td>
-        </tr>
       </table>
 
       <div class="total-price">
         <table>
-          <tr>
-            <td>Subtotal</td>
-            <td>$200</td>
-          </tr>
-          <tr>
-            <td>Tax</td>
-            <td>$50</td>
-          </tr>
           <tr>
             <td>Total</td>
             <td>$250</td>
